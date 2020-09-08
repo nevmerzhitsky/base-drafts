@@ -882,7 +882,7 @@ Internet-Draft                   HTTP/3                   September 2020
    more cookie-pairs, before compression.  If a decompressed field
    section contains multiple cookie field lines, these MUST be
    concatenated into a single octet string using the two-octet delimiter
-   of 0x3B, 0x20 (the ASCII string "; ") before being passed into a
+   of 0x3b, 0x20 (the ASCII string "; ") before being passed into a
    context other than HTTP/2 or HTTP/3, such as an HTTP/1.1 connection,
    or a generic HTTP server application.
 
@@ -2108,7 +2108,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 7.2.7.  MAX_PUSH_ID
 
-   The MAX_PUSH_ID frame (type=0xD) is used by clients to control the
+   The MAX_PUSH_ID frame (type=0xd) is used by clients to control the
    number of server pushes that the server can initiate.  This sets the
    maximum value for a Push ID that the server can use in PUSH_PROMISE
    and CANCEL_PUSH frames.  Consequently, this also limits the number of
@@ -2137,7 +2137,7 @@ Internet-Draft                   HTTP/3                   September 2020
    server fulfills or cancels server pushes.
 
    MAX_PUSH_ID Frame {
-     Type (i) = 0xD,
+     Type (i) = 0xd,
      Length (i),
      Push ID (i),
    }
@@ -2244,19 +2244,19 @@ Internet-Draft                   HTTP/3                   September 2020
 
       payload of a SETTINGS frame.
 
-   H3_MISSING_SETTINGS (0x10A):  No SETTINGS frame was received at the
+   H3_MISSING_SETTINGS (0x10a):  No SETTINGS frame was received at the
       beginning of the control stream.
 
-   H3_REQUEST_REJECTED (0x10B):  A server rejected a request without
+   H3_REQUEST_REJECTED (0x10b):  A server rejected a request without
       performing any application processing.
 
-   H3_REQUEST_CANCELLED (0x10C):  The request or its response (including
+   H3_REQUEST_CANCELLED (0x10c):  The request or its response (including
       pushed response) is cancelled.
 
-   H3_REQUEST_INCOMPLETE (0x10D):  The client's stream terminated
+   H3_REQUEST_INCOMPLETE (0x10d):  The client's stream terminated
       without containing a fully-formed request.
 
-   H3_CONNECT_ERROR (0x10F):  The connection established in response to
+   H3_CONNECT_ERROR (0x10f):  The connection established in response to
       a CONNECT request was reset or abnormally closed.
 
    H3_VERSION_FALLBACK (0x110):  The requested operation cannot be
@@ -2713,7 +2713,7 @@ Internet-Draft                   HTTP/3                   September 2020
                  +--------------+-------+---------------+
                  | Reserved     |  0x9  | N/A           |
                  +--------------+-------+---------------+
-                 | MAX_PUSH_ID  |  0xD  | Section 7.2.7 |
+                 | MAX_PUSH_ID  |  0xd  | Section 7.2.7 |
                  +--------------+-------+---------------+
 
                    Table 2: Initial HTTP/3 Frame Types
@@ -2775,7 +2775,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
    Additionally, each code of the format "0x1f * N + 0x21" for non-
    negative integer values of N (that is, 0x21, 0x40, ..., through
-   0x3FFFFFFFFFFFFFFE) MUST NOT be assigned by IANA.
+   0x3ffffffffffffffe) MUST NOT be assigned by IANA.
 
 11.2.3.  Error Codes
 
@@ -2867,22 +2867,22 @@ Internet-Draft                   HTTP/3                   September 2020
    |                           |        | invalid      |               |
    |                           |        | values       |               |
    +---------------------------+--------+--------------+---------------+
-   | H3_MISSING_SETTINGS       | 0x010A | No SETTINGS  | Section 8.1   |
+   | H3_MISSING_SETTINGS       | 0x010a | No SETTINGS  | Section 8.1   |
    |                           |        | frame        |               |
    |                           |        | received     |               |
    +---------------------------+--------+--------------+---------------+
-   | H3_REQUEST_REJECTED       | 0x010B | Request not  | Section 8.1   |
+   | H3_REQUEST_REJECTED       | 0x010b | Request not  | Section 8.1   |
    |                           |        | processed    |               |
    +---------------------------+--------+--------------+---------------+
-   | H3_REQUEST_CANCELLED      | 0x010C | Data no      | Section 8.1   |
+   | H3_REQUEST_CANCELLED      | 0x010c | Data no      | Section 8.1   |
    |                           |        | longer       |               |
    |                           |        | needed       |               |
    +---------------------------+--------+--------------+---------------+
-   | H3_REQUEST_INCOMPLETE     | 0x010D | Stream       | Section 8.1   |
+   | H3_REQUEST_INCOMPLETE     | 0x010d | Stream       | Section 8.1   |
    |                           |        | terminated   |               |
    |                           |        | early        |               |
    +---------------------------+--------+--------------+---------------+
-   | H3_CONNECT_ERROR          | 0x010F | TCP reset    | Section 8.1   |
+   | H3_CONNECT_ERROR          | 0x010f | TCP reset    | Section 8.1   |
    |                           |        | or error on  |               |
    |                           |        | CONNECT      |               |
    |                           |        | request      |               |
@@ -2895,7 +2895,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
    Additionally, each code of the format "0x1f * N + 0x21" for non-
    negative integer values of N (that is, 0x21, 0x40, ..., through
-   0x3FFFFFFFFFFFFFFE) MUST NOT be assigned by IANA.
+   0x3ffffffffffffffe) MUST NOT be assigned by IANA.
 
 
 
@@ -2951,7 +2951,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
    Additionally, each code of the format "0x1f * N + 0x21" for non-
    negative integer values of N (that is, 0x21, 0x40, ..., through
-   0x3FFFFFFFFFFFFFFE) MUST NOT be assigned by IANA.
+   0x3ffffffffffffffe) MUST NOT be assigned by IANA.
 
 12.  References
 

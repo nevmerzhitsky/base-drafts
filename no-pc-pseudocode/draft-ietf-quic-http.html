@@ -1524,8 +1524,8 @@ at different times.<a href="#section-2.2-6" class="pilcrow">¶</a></p>
         <h3 id="name-draft-version-identificatio">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-draft-version-identificatio" class="section-name selfRef">Draft Version Identification</a>
         </h3>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3.1-1.1">
+<ul class="ulEmpty normal">
+<li class="ulEmpty normal" id="section-3.1-1.1">
             <strong>RFC Editor's Note:</strong>  Please remove this section prior to publication of a
 final version of this document.<a href="#section-3.1-1.1" class="pilcrow">¶</a>
 </li>
@@ -1907,7 +1907,7 @@ blocking.  See that document for additional details.<a href="#section-4.1.1.2-1"
 MAY be split into separate field lines, each with one or more cookie-pairs,
 before compression. If a decompressed field section contains multiple cookie
 field lines, these MUST be concatenated into a single octet string using the
-two-octet delimiter of 0x3B, 0x20 (the ASCII string "; ") before being passed
+two-octet delimiter of 0x3b, 0x20 (the ASCII string "; ") before being passed
 into a context other than HTTP/2 or HTTP/3, such as an HTTP/1.1 connection, or a
 generic HTTP server application.<a href="#section-4.1.1.2-2" class="pilcrow">¶</a></p>
 </section>
@@ -3006,7 +3006,7 @@ connection error (<a href="#errors" class="xref">Section 8</a>) of type H3_FRAME
           <h4 id="name-max_push_id">
 <a href="#section-7.2.7" class="section-number selfRef">7.2.7. </a><a href="#name-max_push_id" class="section-name selfRef">MAX_PUSH_ID</a>
           </h4>
-<p id="section-7.2.7-1">The MAX_PUSH_ID frame (type=0xD) is used by clients to control the number of
+<p id="section-7.2.7-1">The MAX_PUSH_ID frame (type=0xd) is used by clients to control the number of
 server pushes that the server can initiate.  This sets the maximum value for a
 Push ID that the server can use in PUSH_PROMISE and CANCEL_PUSH frames.
 Consequently, this also limits the number of push streams that the server can
@@ -3025,7 +3025,7 @@ sending MAX_PUSH_ID frames as the server fulfills or cancels server pushes.<a hr
             <div class="artwork art-text alignLeft art-drawing" id="section-7.2.7-5.1">
 <pre>
 MAX_PUSH_ID Frame {
-  Type (i) = 0xD,
+  Type (i) = 0xd,
   Length (i),
   Push ID (i),
 }
@@ -3150,27 +3150,27 @@ reducing a limit, or being reused.<a href="#section-8.1-2.18" class="pilcrow">¶
   An endpoint detected an error in the payload of a SETTINGS frame.<a href="#section-8.1-2.20" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-8.1-2.21">H3_MISSING_SETTINGS (0x10A):</dt>
+<dt id="section-8.1-2.21">H3_MISSING_SETTINGS (0x10a):</dt>
           <dd id="section-8.1-2.22">
   No SETTINGS frame was received at the beginning of the control stream.<a href="#section-8.1-2.22" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-8.1-2.23">H3_REQUEST_REJECTED (0x10B):</dt>
+<dt id="section-8.1-2.23">H3_REQUEST_REJECTED (0x10b):</dt>
           <dd id="section-8.1-2.24">
   A server rejected a request without performing any application processing.<a href="#section-8.1-2.24" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-8.1-2.25">H3_REQUEST_CANCELLED (0x10C):</dt>
+<dt id="section-8.1-2.25">H3_REQUEST_CANCELLED (0x10c):</dt>
           <dd id="section-8.1-2.26">
   The request or its response (including pushed response) is cancelled.<a href="#section-8.1-2.26" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-8.1-2.27">H3_REQUEST_INCOMPLETE (0x10D):</dt>
+<dt id="section-8.1-2.27">H3_REQUEST_INCOMPLETE (0x10d):</dt>
           <dd id="section-8.1-2.28">
   The client's stream terminated without containing a fully-formed request.<a href="#section-8.1-2.28" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-8.1-2.29">H3_CONNECT_ERROR (0x10F):</dt>
+<dt id="section-8.1-2.29">H3_CONNECT_ERROR (0x10f):</dt>
           <dd id="section-8.1-2.30">
   The connection established in response to a CONNECT request was reset or
 abnormally closed.<a href="#section-8.1-2.30" class="pilcrow">¶</a>
@@ -3632,7 +3632,7 @@ its semantics, including any parts of the frame that are conditionally present.<
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">MAX_PUSH_ID</td>
-                <td class="text-center" rowspan="1" colspan="1">0xD</td>
+                <td class="text-center" rowspan="1" colspan="1">0xd</td>
                 <td class="text-left" rowspan="1" colspan="1">
                   <a href="#frame-max-push-id" class="xref">Section 7.2.7</a>
 </td>
@@ -3728,8 +3728,8 @@ most restrictive possible value.<a href="#section-11.2.2-4.4" class="pilcrow">¶
           </table>
 </div>
 <p id="section-11.2.2-7">Additionally, each code of the format <code>0x1f * N + 0x21</code> for non-negative integer
-values of N (that is, 0x21, 0x40, ..., through 0x3FFFFFFFFFFFFFFE) MUST
-NOT be assigned by IANA.<a href="#section-11.2.2-7" class="pilcrow">¶</a></p>
+values of N (that is, 0x21, 0x40, ..., through 0x3ffffffffffffffe) MUST NOT be
+assigned by IANA.<a href="#section-11.2.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-error-codes">
@@ -3861,7 +3861,7 @@ include the following field:<a href="#section-11.2.3-3" class="pilcrow">¶</a></
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">H3_MISSING_SETTINGS</td>
-                <td class="text-left" rowspan="1" colspan="1">0x010A</td>
+                <td class="text-left" rowspan="1" colspan="1">0x010a</td>
                 <td class="text-left" rowspan="1" colspan="1">No SETTINGS frame received</td>
                 <td class="text-left" rowspan="1" colspan="1">
                   <a href="#http-error-codes" class="xref">Section 8.1</a>
@@ -3869,7 +3869,7 @@ include the following field:<a href="#section-11.2.3-3" class="pilcrow">¶</a></
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">H3_REQUEST_REJECTED</td>
-                <td class="text-left" rowspan="1" colspan="1">0x010B</td>
+                <td class="text-left" rowspan="1" colspan="1">0x010b</td>
                 <td class="text-left" rowspan="1" colspan="1">Request not processed</td>
                 <td class="text-left" rowspan="1" colspan="1">
                   <a href="#http-error-codes" class="xref">Section 8.1</a>
@@ -3877,7 +3877,7 @@ include the following field:<a href="#section-11.2.3-3" class="pilcrow">¶</a></
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">H3_REQUEST_CANCELLED</td>
-                <td class="text-left" rowspan="1" colspan="1">0x010C</td>
+                <td class="text-left" rowspan="1" colspan="1">0x010c</td>
                 <td class="text-left" rowspan="1" colspan="1">Data no longer needed</td>
                 <td class="text-left" rowspan="1" colspan="1">
                   <a href="#http-error-codes" class="xref">Section 8.1</a>
@@ -3885,7 +3885,7 @@ include the following field:<a href="#section-11.2.3-3" class="pilcrow">¶</a></
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">H3_REQUEST_INCOMPLETE</td>
-                <td class="text-left" rowspan="1" colspan="1">0x010D</td>
+                <td class="text-left" rowspan="1" colspan="1">0x010d</td>
                 <td class="text-left" rowspan="1" colspan="1">Stream terminated early</td>
                 <td class="text-left" rowspan="1" colspan="1">
                   <a href="#http-error-codes" class="xref">Section 8.1</a>
@@ -3893,7 +3893,7 @@ include the following field:<a href="#section-11.2.3-3" class="pilcrow">¶</a></
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">H3_CONNECT_ERROR</td>
-                <td class="text-left" rowspan="1" colspan="1">0x010F</td>
+                <td class="text-left" rowspan="1" colspan="1">0x010f</td>
                 <td class="text-left" rowspan="1" colspan="1">TCP reset or error on CONNECT request</td>
                 <td class="text-left" rowspan="1" colspan="1">
                   <a href="#http-error-codes" class="xref">Section 8.1</a>
@@ -3911,8 +3911,8 @@ include the following field:<a href="#section-11.2.3-3" class="pilcrow">¶</a></
           </table>
 </div>
 <p id="section-11.2.3-7">Additionally, each code of the format <code>0x1f * N + 0x21</code> for non-negative integer
-values of N (that is, 0x21, 0x40, ..., through 0x3FFFFFFFFFFFFFFE) MUST
-NOT be assigned by IANA.<a href="#section-11.2.3-7" class="pilcrow">¶</a></p>
+values of N (that is, 0x21, 0x40, ..., through 0x3ffffffffffffffe) MUST NOT be
+assigned by IANA.<a href="#section-11.2.3-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-stream-types">
@@ -3975,8 +3975,8 @@ stream type, including the layout and semantics of the stream contents.<a href="
             </tbody>
           </table>
 <p id="section-11.2.4-7">Additionally, each code of the format <code>0x1f * N + 0x21</code> for non-negative integer
-values of N (that is, 0x21, 0x40, ..., through 0x3FFFFFFFFFFFFFFE) MUST
-NOT be assigned by IANA.<a href="#section-11.2.4-7" class="pilcrow">¶</a></p>
+values of N (that is, 0x21, 0x40, ..., through 0x3ffffffffffffffe) MUST NOT be
+assigned by IANA.<a href="#section-11.2.4-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -4491,8 +4491,8 @@ what might be a temporary or intermittent error.<a href="#section-a.4.1-4" class
       <h2 id="name-change-log">
 <a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-change-log" class="section-name selfRef">Change Log</a>
       </h2>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-appendix.b-1.1">
+<ul class="ulEmpty normal">
+<li class="ulEmpty normal" id="section-appendix.b-1.1">
           <strong>RFC Editor's Note:</strong>  Please remove this section prior to publication of a
 final version of this document.<a href="#section-appendix.b-1.1" class="pilcrow">¶</a>
 </li>
