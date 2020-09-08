@@ -6260,7 +6260,7 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    compromise packet protection.
 
    A client only receives acknowledgments for its 0-RTT packets once the
-   handshake is complete.
+   handshake is complete, as defined Section 4.1.1 of [QUIC-TLS].
 
 
 
