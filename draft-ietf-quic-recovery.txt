@@ -132,7 +132,7 @@ Internet-Draft             QUIC Loss Detection            September 2020
        A.1.1.  Sent Packet Fields  . . . . . . . . . . . . . . . . .  31
      A.2.  Constants of Interest . . . . . . . . . . . . . . . . . .  31
      A.3.  Variables of interest . . . . . . . . . . . . . . . . . .  32
-     A.4.  Initialization  . . . . . . . . . . . . . . . . . . . . .  32
+     A.4.  Initialization  . . . . . . . . . . . . . . . . . . . . .  33
      A.5.  On Sending a Packet . . . . . . . . . . . . . . . . . . .  33
      A.6.  On Receiving a Datagram . . . . . . . . . . . . . . . . .  33
      A.7.  On Receiving an Acknowledgment  . . . . . . . . . . . . .  34
@@ -1591,6 +1591,10 @@ Internet-Draft             QUIC Loss Detection            September 2020
               RFC 3168, DOI 10.17487/RFC3168, September 2001,
               <https://www.rfc-editor.org/info/rfc3168>.
 
+   [RFC3465]  Allman, M., "TCP Congestion Control with Appropriate Byte
+              Counting (ABC)", RFC 3465, DOI 10.17487/RFC3465, February
+              2003, <https://www.rfc-editor.org/info/rfc3465>.
+
    [RFC5681]  Allman, M., Paxson, V., and E. Blanton, "TCP Congestion
               Control", RFC 5681, DOI 10.17487/RFC5681, September 2009,
               <https://www.rfc-editor.org/info/rfc5681>.
@@ -1612,10 +1616,6 @@ Internet-Draft             QUIC Loss Detection            September 2020
               DOI 10.17487/RFC6298, June 2011,
               <https://www.rfc-editor.org/info/rfc6298>.
 
-   [RFC6582]  Henderson, T., Floyd, S., Gurtov, A., and Y. Nishida, "The
-              NewReno Modification to TCP's Fast Recovery Algorithm",
-              RFC 6582, DOI 10.17487/RFC6582, April 2012,
-              <https://www.rfc-editor.org/info/rfc6582>.
 
 
 
@@ -1625,6 +1625,11 @@ Iyengar & Swett           Expires 12 March 2021                [Page 29]
 
 Internet-Draft             QUIC Loss Detection            September 2020
 
+
+   [RFC6582]  Henderson, T., Floyd, S., Gurtov, A., and Y. Nishida, "The
+              NewReno Modification to TCP's Fast Recovery Algorithm",
+              RFC 6582, DOI 10.17487/RFC6582, April 2012,
+              <https://www.rfc-editor.org/info/rfc6582>.
 
    [RFC6675]  Blanton, E., Allman, M., Wang, L., Jarvinen, I., Kojo, M.,
               and Y. Nishida, "A Conservative Loss Recovery Algorithm
@@ -1670,17 +1675,17 @@ A.1.  Tracking Sent Packets
    by packet number and crypto context and store the per-packet fields
    (Appendix A.1.1) for loss recovery and congestion control.
 
-   After a packet is declared lost, the endpoint can still maintain
-   state for it for an amount of time to allow for packet reordering;
-   see Section 13.3 of [QUIC-TRANSPORT].  This enables a sender to
-   detect spurious retransmissions.
-
 
 
 Iyengar & Swett           Expires 12 March 2021                [Page 30]
 
 Internet-Draft             QUIC Loss Detection            September 2020
 
+
+   After a packet is declared lost, the endpoint can still maintain
+   state for it for an amount of time to allow for packet reordering;
+   see Section 13.3 of [QUIC-TRANSPORT].  This enables a sender to
+   detect spurious retransmissions.
 
    Sent packets are tracked for each packet number space, and ACK
    processing only applies to a single space.
@@ -1724,11 +1729,6 @@ A.2.  Constants of Interest
    kPacketNumberSpace:  An enum to enumerate the three packet number
       spaces.
 
-   enum kPacketNumberSpace {
-     Initial,
-     Handshake,
-     ApplicationData,
-   }
 
 
 
@@ -1737,6 +1737,12 @@ Iyengar & Swett           Expires 12 March 2021                [Page 31]
 
 Internet-Draft             QUIC Loss Detection            September 2020
 
+
+   enum kPacketNumberSpace {
+     Initial,
+     Handshake,
+     ApplicationData,
+   }
 
 A.3.  Variables of interest
 
@@ -1780,12 +1786,6 @@ A.3.  Variables of interest
       in a packet number space to information about them.  Described in
       detail above in Appendix A.1.
 
-A.4.  Initialization
-
-   At the beginning of the connection, initialize the loss detection
-   variables as follows:
-
-
 
 
 
@@ -1793,6 +1793,11 @@ Iyengar & Swett           Expires 12 March 2021                [Page 32]
 
 Internet-Draft             QUIC Loss Detection            September 2020
 
+
+A.4.  Initialization
+
+   At the beginning of the connection, initialize the loss detection
+   variables as follows:
 
    loss_detection_timer.reset()
    pto_count = 0
@@ -1837,11 +1842,6 @@ A.6.  On Receiving a Datagram
    be re-armed.
 
    Pseudocode for OnDatagramReceived follows:
-
-
-
-
-
 
 
 
@@ -2263,10 +2263,10 @@ B.5.  On Packet Acknowledgement
    Invoked from loss detection's OnAckReceived and is supplied with the
    newly acked_packets from sent_packets.
 
-
-
-
-
+   In congestion avoidance, implementers that use an integer
+   representation for congestion_window should be careful with division,
+   and can use the alternative approach suggested in Section 2.1 of
+   [RFC3465].
 
 
 
