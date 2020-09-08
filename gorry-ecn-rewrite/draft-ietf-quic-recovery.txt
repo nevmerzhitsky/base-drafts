@@ -5,8 +5,8 @@
 QUIC                                                     J. Iyengar, Ed.
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                           I. Swett, Ed.
-Expires: 27 February 2021                                         Google
-                                                          26 August 2020
+Expires: 12 March 2021                                            Google
+                                                        8 September 2020
 
 
                QUIC Loss Detection and Congestion Control
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 February 2021.
+   This Internet-Draft will expire on 12 March 2021.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 1]
+Iyengar & Swett           Expires 12 March 2021                 [Page 1]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 2]
+Iyengar & Swett           Expires 12 March 2021                 [Page 2]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
      7.10. Under-utilizing the Congestion Window . . . . . . . . . .  24
@@ -165,9 +165,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 3]
+Iyengar & Swett           Expires 12 March 2021                 [Page 3]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
      C.17. Since draft-ietf-quic-recovery-11 . . . . . . . . . . . .  45
@@ -221,9 +221,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 4]
+Iyengar & Swett           Expires 12 March 2021                 [Page 4]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 3.  Design of the QUIC Transmission Machinery
@@ -277,9 +277,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 5]
+Iyengar & Swett           Expires 12 March 2021                 [Page 5]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 4.1.  Separate Packet Number Spaces
@@ -333,9 +333,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 6]
+Iyengar & Swett           Expires 12 March 2021                 [Page 6]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 4.4.  No Reneging
@@ -389,9 +389,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 7]
+Iyengar & Swett           Expires 12 March 2021                 [Page 7]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 4.8.  The Minimum Congestion Window is Two Packets
@@ -445,9 +445,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 8]
+Iyengar & Swett           Expires 12 March 2021                 [Page 8]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    To avoid generating multiple RTT samples for a single packet, an ACK
@@ -501,9 +501,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021                [Page 9]
+Iyengar & Swett           Expires 12 March 2021                 [Page 9]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    [QUIC-TRANSPORT].  For packets sent in the Application Data packet
@@ -557,9 +557,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 10]
+Iyengar & Swett           Expires 12 March 2021                [Page 10]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 6.  Loss Detection
@@ -613,9 +613,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 11]
+Iyengar & Swett           Expires 12 March 2021                [Page 11]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 6.1.1.  Packet Threshold
@@ -669,9 +669,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 12]
+Iyengar & Swett           Expires 12 March 2021                [Page 12]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    Implementations MAY experiment with absolute thresholds, thresholds
@@ -725,9 +725,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 13]
+Iyengar & Swett           Expires 12 March 2021                [Page 13]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    ensures the PTO is always set based on the latest RTT information and
@@ -781,9 +781,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 14]
+Iyengar & Swett           Expires 12 March 2021                [Page 14]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 6.2.2.  Handshakes and New Paths
@@ -837,9 +837,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 15]
+Iyengar & Swett           Expires 12 March 2021                [Page 15]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 6.2.3.  Speeding Up Handshake Completion
@@ -893,9 +893,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 16]
+Iyengar & Swett           Expires 12 March 2021                [Page 16]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    It is possible the sender has no new or previously-sent data to send.
@@ -949,9 +949,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 17]
+Iyengar & Swett           Expires 12 March 2021                [Page 17]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 6.4.  Discarding Keys and Packet State
@@ -1005,9 +1005,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 18]
+Iyengar & Swett           Expires 12 March 2021                [Page 18]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    An endpoint MUST NOT send a packet if it would cause bytes_in_flight
@@ -1061,9 +1061,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 19]
+Iyengar & Swett           Expires 12 March 2021                [Page 19]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 7.4.  Congestion Avoidance
@@ -1117,9 +1117,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 20]
+Iyengar & Swett           Expires 12 March 2021                [Page 20]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 7.7.  Probe Timeout
@@ -1173,9 +1173,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 21]
+Iyengar & Swett           Expires 12 March 2021                [Page 21]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
                   +========+============================+
@@ -1229,9 +1229,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 22]
+Iyengar & Swett           Expires 12 March 2021                [Page 22]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 7.9.  Pacing
@@ -1285,9 +1285,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 23]
+Iyengar & Swett           Expires 12 March 2021                [Page 23]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 7.10.  Under-utilizing the Congestion Window
@@ -1341,9 +1341,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 24]
+Iyengar & Swett           Expires 12 March 2021                [Page 24]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    A sender MAY attempt to detect suppression of reports by marking
@@ -1372,15 +1372,15 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
    [QUIC-TLS] Thomson, M., Ed. and S. Turner, Ed., "Using TLS to Secure
               QUIC", Work in Progress, Internet-Draft, draft-ietf-quic-
-              tls-latest, 26 August 2020,
+              tls-latest, 8 September 2020,
               <https://tools.ietf.org/html/draft-ietf-quic-tls-latest>.
 
    [QUIC-TRANSPORT]
               Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
               Multiplexed and Secure Transport", Work in Progress,
-              Internet-Draft, draft-ietf-quic-transport-latest, 26
-              August 2020, <https://tools.ietf.org/html/draft-ietf-quic-
-              transport-latest>.
+              Internet-Draft, draft-ietf-quic-transport-latest, 8
+              September 2020, <https://tools.ietf.org/html/draft-ietf-
+              quic-transport-latest>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1397,9 +1397,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 25]
+Iyengar & Swett           Expires 12 March 2021                [Page 25]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 10.2.  Informative References
@@ -1453,9 +1453,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 26]
+Iyengar & Swett           Expires 12 March 2021                [Page 26]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    [RFC6928]  Chu, J., Dukkipati, N., Cheng, Y., and M. Mathis,
@@ -1509,9 +1509,9 @@ A.1.1.  Sent Packet Fields
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 27]
+Iyengar & Swett           Expires 12 March 2021                [Page 27]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
       eliciting.  If true, it is expected that an acknowledgement will
@@ -1565,9 +1565,9 @@ A.3.  Variables of interest
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 28]
+Iyengar & Swett           Expires 12 March 2021                [Page 28]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    smoothed_rtt:  The smoothed RTT of the connection, computed as
@@ -1621,9 +1621,9 @@ A.4.  Initialization
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 29]
+Iyengar & Swett           Expires 12 March 2021                [Page 29]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    loss_detection_timer.reset()
@@ -1677,9 +1677,9 @@ A.6.  On Receiving a Datagram
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 30]
+Iyengar & Swett           Expires 12 March 2021                [Page 30]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    OnDatagramReceived(datagram):
@@ -1733,9 +1733,9 @@ A.7.  On Receiving an Acknowledgment
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 31]
+Iyengar & Swett           Expires 12 March 2021                [Page 31]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
          ProcessECN(ack, pn_space)
@@ -1789,9 +1789,9 @@ A.8.  Setting the Loss Detection Timer
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 32]
+Iyengar & Swett           Expires 12 March 2021                [Page 32]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    GetLossTimeAndSpace():
@@ -1845,9 +1845,9 @@ Internet-Draft             QUIC Loss Detection               August 2020
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 33]
+Iyengar & Swett           Expires 12 March 2021                [Page 33]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
      if (earliest_loss_time != 0):
@@ -1901,9 +1901,9 @@ A.9.  On Timeout
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 34]
+Iyengar & Swett           Expires 12 March 2021                [Page 34]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    OnLossDetectionTimeout():
@@ -1957,9 +1957,9 @@ A.10.  Detecting Lost Packets
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 35]
+Iyengar & Swett           Expires 12 March 2021                [Page 35]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    DetectAndRemoveLostPackets(pn_space):
@@ -2013,9 +2013,9 @@ B.1.  Constants of interest
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 36]
+Iyengar & Swett           Expires 12 March 2021                [Page 36]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
       event is detected.  Section 7 recommends a value is 0.5.
@@ -2069,9 +2069,9 @@ B.3.  Initialization
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 37]
+Iyengar & Swett           Expires 12 March 2021                [Page 37]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    congestion_window = kInitialWindow
@@ -2125,9 +2125,9 @@ B.5.  On Packet Acknowledgement
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 38]
+Iyengar & Swett           Expires 12 March 2021                [Page 38]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 B.6.  On New Congestion Event
@@ -2181,9 +2181,9 @@ B.8.  On Packets Lost
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 39]
+Iyengar & Swett           Expires 12 March 2021                [Page 39]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    InPersistentCongestion(largest_lost):
@@ -2237,9 +2237,9 @@ Appendix C.  Change Log
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 40]
+Iyengar & Swett           Expires 12 March 2021                [Page 40]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 C.1.  Since draft-ietf-quic-recovery-28
@@ -2293,9 +2293,9 @@ C.6.  Since draft-ietf-quic-recovery-23
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 41]
+Iyengar & Swett           Expires 12 March 2021                [Page 41]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    *  Connection Close is not ack-eliciting (#3097, #3098)
@@ -2349,9 +2349,9 @@ C.10.  Since draft-ietf-quic-recovery-19
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 42]
+Iyengar & Swett           Expires 12 March 2021                [Page 42]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    *  Clarify that the time threshold loss alarm takes precedence over
@@ -2405,9 +2405,9 @@ C.12.  Since draft-ietf-quic-recovery-17
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 43]
+Iyengar & Swett           Expires 12 March 2021                [Page 43]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 C.13.  Since draft-ietf-quic-recovery-16
@@ -2461,9 +2461,9 @@ C.15.  Since draft-ietf-quic-recovery-13
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 44]
+Iyengar & Swett           Expires 12 March 2021                [Page 44]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    *  Packets are declared lost after an RTO is verified (#935, #1582)
@@ -2517,9 +2517,9 @@ C.21.  Since draft-ietf-quic-recovery-07
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 45]
+Iyengar & Swett           Expires 12 March 2021                [Page 45]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
 C.22.  Since draft-ietf-quic-recovery-06
@@ -2573,9 +2573,9 @@ C.29.  Since draft-iyengar-quic-loss-recovery-01
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 46]
+Iyengar & Swett           Expires 12 March 2021                [Page 46]
 
-Internet-Draft             QUIC Loss Detection               August 2020
+Internet-Draft             QUIC Loss Detection            September 2020
 
 
    *  Added table of contents
@@ -2629,4 +2629,4 @@ Authors' Addresses
 
 
 
-Iyengar & Swett         Expires 27 February 2021               [Page 47]
+Iyengar & Swett           Expires 12 March 2021                [Page 47]
