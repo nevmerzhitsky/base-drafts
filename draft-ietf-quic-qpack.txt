@@ -2190,13 +2190,15 @@ Internet-Draft                    QPACK                   September 2020
 
      if dynamicIndex is None:
        # Could not index it, literal
-       if nameIndex is None or isStaticName:
-         # Encodes a literal with a static name or literal name
-         encodeLiteral(streamBuffer, nameIndex, line)
+       if dynamicNameIndex is not None:
+         # Encode literal with dynamic name, possibly above base
+         encodeDynamicLiteral(streamBuffer, dynamicNameIndex,
+                              base, line)
+         requiredInsertCount = max(requiredInsertCount,
+                                   dynamicNameIndex)
        else:
-         # encode literal with dynamic name, possibly above base
-         encodeDynamicLiteral(streamBuffer, nameIndex, base, line)
-         requiredInsertCount = max(requiredInsertCount, nameIndex)
+         # Encodes a literal with a static name or literal name
+         encodeLiteral(streamBuffer, staticNameIndex, line)
      else:
        # Dynamic index reference
        assert(dynamicIndex is not None)
@@ -2230,8 +2232,6 @@ Appendix C.  Change Log
 C.1.  Since draft-ietf-quic-qpack-15
 
    No changes
-
-
 
 
 
