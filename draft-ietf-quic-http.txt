@@ -1092,8 +1092,8 @@ Internet-Draft                   HTTP/3                   September 2020
 
 4.3.  HTTP Upgrade
 
-   HTTP/3 does not support the HTTP Upgrade mechanism (Section 9.9 of
-   [HTTP11]) or 101 (Switching Protocols) informational status code
+   HTTP/3 does not support the HTTP Upgrade mechanism (Section 6.7 of
+   {{!SEMANTICS}) or 101 (Switching Protocols) informational status code
    (Section 10.2.2 of [SEMANTICS]).
 
 4.4.  Server Push
