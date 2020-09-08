@@ -1122,7 +1122,7 @@ Iyengar & Swett           Expires 12 March 2021                [Page 20]
 Internet-Draft             QUIC Loss Detection            September 2020
 
 
-                    New Path or         +------------+
+                    New Path or      +------------+
                persistent congestion |   Slow     |
            (O)---------------------->|   Start    |
                                      +------------+
