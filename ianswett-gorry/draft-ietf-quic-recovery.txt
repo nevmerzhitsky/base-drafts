@@ -829,7 +829,7 @@ Internet-Draft             QUIC Loss Detection            September 2020
    Initial packet number space doubles the length of the timeout in the
    Handshake packet number space.
 
-   The total length of time over which consecutive PTOs expire are
+   The total length of time over which consecutive PTOs expire is
    limited by the idle timeout.
 
 
