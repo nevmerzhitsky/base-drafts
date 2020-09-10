@@ -1884,8 +1884,9 @@ it may assume some or all of the server's Initial packets were lost.<a href="#se
 <p id="section-6.2.3-2">To speed up handshake completion under these conditions, an endpoint MAY send
 a packet containing unacknowledged CRYPTO data earlier than the PTO expiry,
 subject to the address validation limits in Section 8.1 of <span>[<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-6.2.3-2" class="pilcrow">¶</a></p>
-<p id="section-6.2.3-3">Endpoints can also use coalesced packets to ensure that each datagram elicits at
-least one acknowledgement.  For example, a client can coalesce an Initial packet
+<p id="section-6.2.3-3">Endpoints can also use coalesced packets (see Section 12.2 of
+<span>[<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>) to ensure that each datagram elicits at least one
+acknowledgement. For example, a client can coalesce an Initial packet
 containing PING and PADDING frames with a 0-RTT data packet and a server can
 coalesce an Initial packet containing a PING frame with one or more packets in
 its first flight.<a href="#section-6.2.3-3" class="pilcrow">¶</a></p>
@@ -3358,8 +3359,8 @@ OnPacketNumberSpaceDiscarded(pn_space):
       <h2 id="name-change-log">
 <a href="#section-appendix.c" class="section-number selfRef">Appendix C. </a><a href="#name-change-log" class="section-name selfRef">Change Log</a>
       </h2>
-<ul class="ulEmpty normal">
-<li class="ulEmpty normal" id="section-appendix.c-1.1">
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-appendix.c-1.1">
           <strong>RFC Editor's Note:</strong>  Please remove this section prior to
 publication of a final version of this document.<a href="#section-appendix.c-1.1" class="pilcrow">¶</a>
 </li>
