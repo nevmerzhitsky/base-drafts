@@ -3100,6 +3100,10 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
       validation_timeout = max(3*PTO, 6*kInitialRtt)
 
+   This timeout allows for multiple PTOs to expire prior to failing path
+   validation, so that loss of a single PATH_CHALLENGE or PATH_RESPONSE
+   frame does not cause path validation failure.
+
    Note that the endpoint might receive packets containing other frames
    on the new path, but a PATH_RESPONSE frame with appropriate data is
    required for path validation to succeed.
@@ -3127,10 +3131,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    connection migration before the handshake is confirmed, as defined in
    section 4.1.2 of [QUIC-TLS].
 
-   If the peer sent the disable_active_migration transport parameter, an
-   endpoint also MUST NOT send packets (including probing packets; see
-   Section 9.1) from a different local address to the address the peer
-
 
 
 Iyengar & Thomson         Expires 14 March 2021                [Page 56]
@@ -3138,6 +3138,9 @@ Iyengar & Thomson         Expires 14 March 2021                [Page 56]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
+   If the peer sent the disable_active_migration transport parameter, an
+   endpoint also MUST NOT send packets (including probing packets; see
+   Section 9.1) from a different local address to the address the peer
    used during the handshake.  An endpoint that has sent this transport
    parameter, but detects that a peer has nonetheless migrated to a
    different remote address MUST either drop the incoming packets on
@@ -3182,9 +3185,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    connection ID is available at the peer.  That can be achieved by
    including a NEW_CONNECTION_ID frame in the probe.
 
-   Receiving a PATH_CHALLENGE frame from a peer indicates that the peer
-   is probing for reachability on a path.  An endpoint sends a
-   PATH_RESPONSE frame in response, as per Section 8.2.
 
 
 
@@ -3193,6 +3193,10 @@ Iyengar & Thomson         Expires 14 March 2021                [Page 57]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
+
+   Receiving a PATH_CHALLENGE frame from a peer indicates that the peer
+   is probing for reachability on a path.  An endpoint sends a
+   PATH_RESPONSE frame in response, as per Section 8.2.
 
    PATH_CHALLENGE, PATH_RESPONSE, NEW_CONNECTION_ID, and PADDING frames
    are "probing frames", and all other frames are "non-probing frames".
@@ -3238,10 +3242,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    validation (Section 8.2) to verify the peer's ownership of the
    unvalidated address.
 
-   An endpoint MAY send data to an unvalidated peer address, but it MUST
-   protect against potential attacks as described in Section 9.3.1 and
-   Section 9.3.2.  An endpoint MAY skip validation of a peer address if
-   that address has been seen recently.  In particular, if an endpoint
 
 
 
@@ -3250,6 +3250,10 @@ Iyengar & Thomson         Expires 14 March 2021                [Page 58]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
+   An endpoint MAY send data to an unvalidated peer address, but it MUST
+   protect against potential attacks as described in Section 9.3.1 and
+   Section 9.3.2.  An endpoint MAY skip validation of a peer address if
+   that address has been seen recently.  In particular, if an endpoint
    returns to a previously-validated path after detecting some form of
    spurious migration, skipping address validation and restoring loss
    detection and congestion state can reduce the performance impact of
@@ -3291,10 +3295,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    If an endpoint skips validation of a peer address as described above,
    it does not need to limit its sending rate.
-
-
-
-
 
 
 
@@ -3720,7 +3720,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    To avoid excessively small idle timeout periods, endpoints MUST
    increase the idle timeout period to be at least three times the
-   current Probe Timeout (PTO).
+   current Probe Timeout (PTO).  This allows for multiple PTOs to expire
+   prior to idle timeout, ensuring the idle timeout does not expire as a
+   result of a single packet loss.
 
 10.1.1.  Liveness Testing
 
@@ -3744,8 +3746,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    to defer an idle timeout.  This facility could be used when the
    application wishes to avoid losing state that has been associated
    with an open connection, but does not expect to exchange application
-   data for some time.  With this option, an endpoint could send a PING
-   frame (Section 19.2) periodically, which will cause the peer to
 
 
 
@@ -3754,6 +3754,8 @@ Iyengar & Thomson         Expires 14 March 2021                [Page 67]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
+   data for some time.  With this option, an endpoint could send a PING
+   frame (Section 19.2) periodically, which will cause the peer to
    restart its idle timeout period.  Sending a packet containing a PING
    frame restarts the idle timeout for this endpoint also if this is the
    first ack-eliciting packet sent since receiving a packet.  Sending a
@@ -3799,8 +3801,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    properly discarded.  These states SHOULD persist for at least three
    times the current Probe Timeout (PTO) interval as defined in
    [QUIC-RECOVERY].
-
-
 
 
 
