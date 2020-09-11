@@ -3721,8 +3721,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    To avoid excessively small idle timeout periods, endpoints MUST
    increase the idle timeout period to be at least three times the
    current Probe Timeout (PTO).  This allows for multiple PTOs to
-   expire, and therefore multiple probes to be sent in the event of
-   loss, prior to idle timeout.
+   expire, and therefore multiple probes to be sent and lost, prior to
+   idle timeout.
 
 10.1.1.  Liveness Testing
 
