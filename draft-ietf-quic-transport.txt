@@ -8362,16 +8362,12 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    if clients send an empty Token field when the server address has
    changed from when the NEW_TOKEN frame was received.
 
-   Therefore, clients SHOULD NOT send a token received in a NEW_TOKEN
-   frame from one server address in an Initial packet that is sent to a
-   different server address.  As strict equality might reduce the
-   utility of this mechanism, clients MAY employ heuristics that result
-   in different server addresses being treated as equivalent, such as
-   treating addresses with a shared prefix of sufficient length as being
-   functionally equivalent (for instance, /24 in IPv4 or /56 in IPv6).
-   In addition, clients SHOULD treat a preferred address that is
-   successfully validated as equivalent to the address on which the
-   connection was made; see Section 9.6.
+   Clients could avoid using NEW_TOKEN if the server address changes.
+   However, not including a Token field could adversely affect
+   performance.  Servers could rely on NEW_TOKEN to enable sending of
+   data in excess of the three times limit on sending data; see
+   Section 8.1.  In particular, this affects cases where clients use
+   0-RTT to request data from servers.
 
    Sending a Retry packet (Section 17.2.5) offers a server the option to
    change the Token field.  After sending a Retry, the server can also
@@ -8393,6 +8389,10 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    reduces the options that a server has to control the encrypted
    portion of datagrams.
 
+   This document does not offer any additional countermeasures that are
+   specific to use of preferred addresses and can be implemented by
+   endpoints.  The generic measures described in Section 21.4.5 could be
+   used as further mitigation.
 
 
 
@@ -8401,11 +8401,6 @@ Iyengar & Thomson         Expires 15 March 2021               [Page 150]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
-
-   This document does not offer any additional countermeasures that are
-   specific to use of preferred addresses and can be implemented by
-   endpoints.  The generic measures described in Section 21.4.5 could be
-   used as further mitigation.
 
 21.4.4.  Request Forgery with Spoofed Migration
 
@@ -8451,6 +8446,11 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    non-loopback address.  Endpoints that depend on these capabilities
    could offer an option to disable these protections.
 
+   Similarly, endpoints could regard a change in address to link-local
+   address [RFC4291] or an address in a private use range [RFC1918] from
+   a global, unique-local [RFC4193], or non-private address as a
+   potential attempt at request forgery.  Endpoints could refuse to use
+
 
 
 Iyengar & Thomson         Expires 15 March 2021               [Page 151]
@@ -8458,10 +8458,6 @@ Iyengar & Thomson         Expires 15 March 2021               [Page 151]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
-   Similarly, endpoints could regard a change in address to link-local
-   address [RFC4291] or an address in a private use range [RFC1918] from
-   a global, unique-local [RFC4193], or non-private address as a
-   potential attempt at request forgery.  Endpoints could refuse to use
    these addresses entirely, but that carries a significant risk of
    interfering with legitimate uses.  Endpoints SHOULD NOT refuse to use
    an address unless they have specific knowledge about the network
@@ -8506,6 +8502,10 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    allowed to make, imposing restrictions on the minimum transfer speed
    a connection is allowed to have, and restricting the length of time
    an endpoint is allowed to stay connected.
+
+
+
+
 
 
 
