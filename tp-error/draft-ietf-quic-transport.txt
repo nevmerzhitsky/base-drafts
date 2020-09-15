@@ -1502,9 +1502,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    stream ID that cannot be expressed as a variable-length integer; see
    Section 16.  If either is received, the connection MUST be closed
    immediately.  The connection error to be used is
-   TRANSPORT_PARAMETER_ERROR if the offending value was in a transport
-   parameter or FRAME_ENCODING_ERROR if the offending value was in a
-   frame; see Section 10.2.
+   TRANSPORT_PARAMETER_ERROR if the offending value was received in a
+   transport parameter or FRAME_ENCODING_ERROR if in a frame; see
+   Section 10.2.
 
 
 
