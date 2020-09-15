@@ -1501,9 +1501,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    received with a value greater than 2^60, this would allow a maximum
    stream ID that cannot be expressed as a variable-length integer; see
    Section 16.  If either is received, the connection MUST be closed
-   immediately.  The connection error to be used is
-   TRANSPORT_PARAMETER_ERROR if the offending value was received in a
-   transport parameter or FRAME_ENCODING_ERROR if in a frame; see
+   immediately with a connection error of type TRANSPORT_PARAMETER_ERROR
+   if the offending value was received in a transport parameter or of
+   type FRAME_ENCODING_ERROR if it was received in a frame; see
    Section 10.2.
 
 
