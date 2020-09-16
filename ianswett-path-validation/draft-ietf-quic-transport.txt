@@ -3038,6 +3038,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    same packet.  This ensures that an unused connection ID will be
    available to the peer when sending a response.
 
+   The number of new paths an endpoint can probe is limited by the
+   number of extra Connection IDs the peer has previously supplied.
+
 8.2.1.  Initiating Path Validation
 
    To initiate path validation, an endpoint sends a PATH_CHALLENGE frame
@@ -3070,9 +3073,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    response to one PATH_CHALLENGE frame; see Section 13.3.  The peer is
    expected to send more PATH_CHALLENGE frames as necessary to evoke
    additional PATH_RESPONSE frames.
-
-
-
 
 
 
