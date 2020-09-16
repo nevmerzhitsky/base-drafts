@@ -3911,11 +3911,11 @@ that support NAT traversal, the expectation is that one or other peer is able to
 receive packets without first having sent a packet on that path. Effective NAT
 traversal needs additional synchronization mechanisms that are not provided
 here.<a href="#section-8.2-5" class="pilcrow">¶</a></p>
-<p id="section-8.2-6">An endpoint MAY include PATH_CHALLENGE and PATH_RESPONSE frames that are used
-for path validation with other frames.  In particular, an endpoint can pad a
-packet carrying a PATH_CHALLENGE for Path Maximum Transfer Unit (PMTU)
-discovery (see <a href="#pmtud" class="xref">Section 14.2.1</a>), or an endpoint can include a PATH_RESPONSE with its
-own PATH_CHALLENGE.<a href="#section-8.2-6" class="pilcrow">¶</a></p>
+<p id="section-8.2-6">An endpoint MAY include other frames with the PATH_CHALLENGE and PATH_RESPONSE
+frames used for path validation.  In particular, an endpoint can pad a packet
+carrying a PATH_CHALLENGE for Path Maximum Transfer Unit (PMTU) discovery
+(see <a href="#pmtud" class="xref">Section 14.2.1</a>), or an endpoint can include a PATH_RESPONSE with its own
+PATH_CHALLENGE.<a href="#section-8.2-6" class="pilcrow">¶</a></p>
 <p id="section-8.2-7">When probing a new path, an endpoint might want to ensure that its peer has an
 unused connection ID available for responses. The endpoint can send
 NEW_CONNECTION_ID and PATH_CHALLENGE frames in the same packet. This ensures

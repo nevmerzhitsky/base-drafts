@@ -3026,8 +3026,8 @@ Iyengar & Thomson         Expires 20 March 2021                [Page 54]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
-   An endpoint MAY include PATH_CHALLENGE and PATH_RESPONSE frames that
-   are used for path validation with other frames.  In particular, an
+   An endpoint MAY include other frames with the PATH_CHALLENGE and
+   PATH_RESPONSE frames used for path validation.  In particular, an
    endpoint can pad a packet carrying a PATH_CHALLENGE for Path Maximum
    Transfer Unit (PMTU) discovery (see Section 14.2.1), or an endpoint
    can include a PATH_RESPONSE with its own PATH_CHALLENGE.
