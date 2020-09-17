@@ -3250,10 +3250,10 @@ Iyengar & Thomson         Expires 21 March 2021                [Page 58]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
-   In response to such a packet, an endpoint MUST start sending
-   subsequent packets to the new peer address and MUST initiate path
-   validation (Section 8.2) to verify the peer's ownership of the
-   address if it has not already.
+   In response to such a packet, an endpoint MUST send all subsequent
+   packets to the new peer address and MUST initiate path validation
+   (Section 8.2) to verify the peer's ownership of the address if it has
+   not already.
 
    An endpoint MAY send data to an unvalidated peer address, but it MUST
    protect against potential attacks as described in Section 9.3.1 and
