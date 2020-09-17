@@ -2390,9 +2390,8 @@ Internet-Draft                   HTTP/3                   September 2020
    served out of cache, overriding the actual representation that the
    authoritative tenant provides.
 
-   Pushed responses for which an origin server is not authoritative (see
-   Section 3.4) are prohibited; clients are required to reject them (see
-   Section 4.4).
+   Clients are required to reject pushed responses for which an origin
+   server is not authoritative; see Section 4.4.
 
 10.5.  Denial-of-Service Considerations
 
@@ -2402,6 +2401,7 @@ Internet-Draft                   HTTP/3                   September 2020
    storing a greater amount of state.  Settings for these features
    ensure that memory commitments for these features are strictly
    bounded.
+
 
 
 
