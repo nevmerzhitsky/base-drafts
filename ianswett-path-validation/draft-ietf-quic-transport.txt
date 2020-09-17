@@ -3040,6 +3040,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    The number of new paths an endpoint can probe is limited by the
    number of extra Connection IDs the peer has previously supplied.
+   Supplying a peer with multiple Connection IDs allows it to
+   simultaneously probe multiple paths.
 
 8.2.1.  Initiating Path Validation
 
@@ -3069,10 +3071,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    delay transmission of a packet containing a PATH_RESPONSE frame
    unless constrained by congestion control.
 
-   An endpoint MUST NOT send more than one PATH_RESPONSE frame in
-   response to one PATH_CHALLENGE frame; see Section 13.3.  The peer is
-   expected to send more PATH_CHALLENGE frames as necessary to evoke
-   additional PATH_RESPONSE frames.
+
+
 
 
 
@@ -3081,6 +3081,11 @@ Iyengar & Thomson         Expires 21 March 2021                [Page 55]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
+
+   An endpoint MUST NOT send more than one PATH_RESPONSE frame in
+   response to one PATH_CHALLENGE frame; see Section 13.3.  The peer is
+   expected to send more PATH_CHALLENGE frames as necessary to evoke
+   additional PATH_RESPONSE frames.
 
 8.2.3.  Successful Path Validation
 
@@ -3124,11 +3129,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    failure.  Primarily, this happens if a connection migration to a new
    path is initiated while a path validation on the old path is in
    progress.
-
-
-
-
-
 
 
 
