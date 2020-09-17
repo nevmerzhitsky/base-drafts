@@ -3902,9 +3902,9 @@ received by that peer. Path validation is used to ensure that packets received
 from a migrating peer do not carry a spoofed source address.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
 <p id="section-8.2-3">Path validation does not validate that a peer can send in the return direction.
 Acknowledgments cannot be used for path validation as they contain insufficient
-entropy and might be spoofed. No method is provided to establish return
-reachability, as endpoints independently determine reachability on each
-direction of a path.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+entropy and might be spoofed. Endpoints independently determine reachability
+on each direction of a path, and therefore return reachability can only be
+established by the peer.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
 <p id="section-8.2-4">Path validation can be used at any time by either endpoint.  For instance, an
 endpoint might check that a peer is still in possession of its address after a
 period of quiescence.<a href="#section-8.2-4" class="pilcrow">¶</a></p>
@@ -3917,7 +3917,7 @@ here.<a href="#section-8.2-5" class="pilcrow">¶</a></p>
 <p id="section-8.2-6">An endpoint MAY include other frames with the PATH_CHALLENGE and PATH_RESPONSE
 frames used for path validation.  In particular, an endpoint can include
 PADDING with a PATH_CHALLENGE for Path Maximum Transfer Unit (PMTU) discovery
-(see <a href="#pmtud" class="xref">Section 14.2.1</a>), and/or include a PATH_RESPONSE with its own PATH_CHALLENGE.<a href="#section-8.2-6" class="pilcrow">¶</a></p>
+(see <a href="#pmtud" class="xref">Section 14.2.1</a>), and/or include a PATH_CHALLENGE with its own PATH_RESPONSE.<a href="#section-8.2-6" class="pilcrow">¶</a></p>
 <p id="section-8.2-7">When probing a new path, an endpoint might want to ensure that its peer has an
 unused connection ID available for responses. The endpoint can send
 NEW_CONNECTION_ID and PATH_CHALLENGE frames in the same packet. This ensures

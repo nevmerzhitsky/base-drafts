@@ -3004,9 +3004,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    Path validation does not validate that a peer can send in the return
    direction.  Acknowledgments cannot be used for path validation as
-   they contain insufficient entropy and might be spoofed.  No method is
-   provided to establish return reachability, as endpoints independently
-   determine reachability on each direction of a path.
+   they contain insufficient entropy and might be spoofed.  Endpoints
+   independently determine reachability on each direction of a path, and
+   therefore return reachability can only be established by the peer.
 
    Path validation can be used at any time by either endpoint.  For
    instance, an endpoint might check that a peer is still in possession
@@ -3030,7 +3030,7 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    PATH_RESPONSE frames used for path validation.  In particular, an
    endpoint can include PADDING with a PATH_CHALLENGE for Path Maximum
    Transfer Unit (PMTU) discovery (see Section 14.2.1), and/or include a
-   PATH_RESPONSE with its own PATH_CHALLENGE.
+   PATH_CHALLENGE with its own PATH_RESPONSE.
 
    When probing a new path, an endpoint might want to ensure that its
    peer has an unused connection ID available for responses.  The
