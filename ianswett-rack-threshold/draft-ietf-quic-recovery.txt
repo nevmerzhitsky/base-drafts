@@ -717,10 +717,10 @@ Internet-Draft             QUIC Loss Detection            September 2020
       has not yet caught up.
 
    The RECOMMENDED time threshold (kTimeThreshold), expressed as a
-   round-trip time multiplier, is 9/8, though RACK ([RACK]) specifies a
-   slightly larger threshold, equivalent to 5/4.  The RECOMMENDED value
-   of the timer granularity (kGranularity) is 1ms.
+   round-trip time multiplier, is 9/8.  The RECOMMENDED value of the
+   timer granularity (kGranularity) is 1ms.
 
+   Note:  TCP's RACK ([RACK]) specifies a slightly larger threshold,
 
 
 
@@ -729,6 +729,9 @@ Iyengar & Swett           Expires 26 March 2021                [Page 13]
 
 Internet-Draft             QUIC Loss Detection            September 2020
 
+
+      equivalent to 5/4, for a similar purpose.  Experience with QUIC
+      shows that 9/8 works well.
 
    Implementations MAY experiment with absolute thresholds, thresholds
    from previous connections, adaptive thresholds, or including RTT
@@ -776,15 +779,15 @@ Internet-Draft             QUIC Loss Detection            September 2020
    the peer is expected to not delay these packets intentionally; see
    13.2.1 of [QUIC-TRANSPORT].
 
-   The PTO period MUST be at least kGranularity, to avoid the timer
-   expiring immediately.
-
 
 
 Iyengar & Swett           Expires 26 March 2021                [Page 14]
 
 Internet-Draft             QUIC Loss Detection            September 2020
 
+
+   The PTO period MUST be at least kGranularity, to avoid the timer
+   expiring immediately.
 
    When ack-eliciting packets in multiple packet number spaces are in
    flight, the timer MUST be set to the earlier value of the Initial and
@@ -831,9 +834,6 @@ Internet-Draft             QUIC Loss Detection            September 2020
 
    The total length of time over which consecutive PTOs expire is
    limited by the idle timeout.
-
-
-
 
 
 
