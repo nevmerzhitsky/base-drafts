@@ -807,7 +807,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Krasic, et al.</td>
-<td class="center">Expires 23 March 2021</td>
+<td class="center">Expires 26 March 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -820,12 +820,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-quic-qpack-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2020-09-19" class="published">19 September 2020</time>
+<time datetime="2020-09-22" class="published">22 September 2020</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-03-23">23 March 2021</time></dd>
+<dd class="expires"><time datetime="2021-03-26">26 March 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -881,7 +881,7 @@ code and issues list for this draft can be found at
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 23 March 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 March 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2890,11 +2890,11 @@ are registered in the "HTTP/3 Error Code" registry established in <span>[<a href
 <dl class="references">
 <dt id="HTTP3">[HTTP3]</dt>
         <dd>
-<span class="refAuthor">Bishop, M., Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 3 (HTTP/3)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-http-latest</span>, <time datetime="2020-09-19" class="refDate">19 September 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-http-latest">https://tools.ietf.org/html/draft-ietf-quic-http-latest</a>&gt;</span>. </dd>
+<span class="refAuthor">Bishop, M., Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 3 (HTTP/3)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-http-latest</span>, <time datetime="2020-09-22" class="refDate">22 September 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-http-latest">https://tools.ietf.org/html/draft-ietf-quic-http-latest</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="QUIC-TRANSPORT">[QUIC-TRANSPORT]</dt>
         <dd>
-<span class="refAuthor">Iyengar, J., Ed.</span><span class="refAuthor"> and M. Thomson, Ed.</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-latest</span>, <time datetime="2020-09-19" class="refDate">19 September 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-latest">https://tools.ietf.org/html/draft-ietf-quic-transport-latest</a>&gt;</span>. </dd>
+<span class="refAuthor">Iyengar, J., Ed.</span><span class="refAuthor"> and M. Thomson, Ed.</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-latest</span>, <time datetime="2020-09-22" class="refDate">22 September 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-latest">https://tools.ietf.org/html/draft-ietf-quic-transport-latest</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -3495,7 +3495,7 @@ of a field with a static name reference.<a href="#section-b.1-1" class="pilcrow"
 <div class="artwork art-text alignLeft" id="section-b.1-2">
 <pre>
 Data                | Interpretation
-                              | Encoder's Dynamic Table
+                             | Encoder's Dynamic Table
 
 Stream: 0
 0000                | Required Insert Count = 0, Base = 0
@@ -3503,9 +3503,9 @@ Stream: 0
 2e68 746d 6c        |  Static Table, Index=1
                     |  (:path=/index.html)
 
-                                Abs Ref Name        Value
-                                ^-- acknowledged --^
-                                Size=0
+                              Abs Ref Name        Value
+                              ^-- acknowledged --^
+                              Size=0
 </pre><a href="#section-b.1-2" class="pilcrow">¶</a>
 </div>
 </section>
@@ -3523,43 +3523,43 @@ the Required Insert Count.<a href="#section-b.2-1" class="pilcrow">¶</a></p>
 <div class="artwork art-text alignLeft" id="section-b.2-2">
 <pre>
 Stream: Encoder
-3fb801              | Set Dynamic Table Capacity=215
-c00c 7777 772e 6965 | Insert With Name Reference
-7466 2e6f 7267      |  Static Table, Index=0
-                    |  (:authority=www.ietf.org)
-c10b 2f73 7461 6e64 | Insert With Name Reference
-617 26473 2f        |  Static Table, Index=1
-                    |  (:path=/standards/)
+3fbd01              | Set Dynamic Table Capacity=220
+c00f 7777 772e 6578 | Insert With Name Reference
+616d 706c 652e 636f | Static Table, Index=0
+6d                  |  (:authority=www.example.com)
+c10c 2f73 616d 706c | Insert With Name Reference
+652f 7061 7468      |  Static Table, Index=1
+                    |  (:path=/sample/path)
 
-                                Abs Ref Name        Value
-                                ^-- acknowledged --^
-                                 1   0  :authority  www.ietf.org
-                                 2   0  :path       /standards/
-                                Size=102
+                              Abs Ref Name        Value
+                              ^-- acknowledged --^
+                               1   0  :authority  www.example.com
+                               2   0  :path       /sample/path
+                              Size=106
 
 Stream: 4
 0381                | Required Insert Count = 2, Base = 0
 10                  | Indexed Field Line With Post-Base Index
                     |  Absolute Index = Base(0) + Index(0) + 1 = 1
-                    |  (:authority=www.ietf.org)
+                    |  (:authority=www.example.com)
 11                  | Indexed Field Line With Post-Base Index
                     |  Absolute Index = Base(0) + Index(1) + 1 = 2
-                    |  (:path=/standards/)
+                    |  (:path=/sample/path)
 
-                                Abs Ref Name        Value
-                                ^-- acknowledged --^
-                                 1   1  :authority  www.ietf.org
-                                 2   1  :path       /standards/
-                                Size=102
+                              Abs Ref Name        Value
+                              ^-- acknowledged --^
+                               1   1  :authority  www.example.com
+                               2   1  :path       /sample/path
+                              Size=106
 
 Stream: Decoder
 84                  | Section Acknowledgement (stream=4)
 
-                                Abs Ref Name        Value
-                                 1   0  :authority  www.ietf.org
-                                 2   0  :path       /standards/
-                                ^-- acknowledged --^
-                                Size=102
+                              Abs Ref Name        Value
+                               1   0  :authority  www.example.com
+                               2   0  :path       /sample/path
+                              ^-- acknowledged --^
+                              Size=106
 </pre><a href="#section-b.2-2" class="pilcrow">¶</a>
 </div>
 </section>
@@ -3579,22 +3579,22 @@ Stream: Encoder
 6b65 790c 6375 7374 |  (custom-key=custom-value)
 6f6d 2d76 616c 7565 |
 
-                                Abs Ref Name        Value
-                                 1   0  :authority  www.ietf.org
-                                 2   0  :path       /standards/
-                                ^-- acknowledged --^
-                                 3   0  custom-key  custom-value
-                                Size=156
+                              Abs Ref Name        Value
+                               1   0  :authority  www.example.com
+                               2   0  :path       /sample/path
+                              ^-- acknowledged --^
+                               3   0  custom-key  custom-value
+                              Size=160
 
 Stream: Decoder
 01                  | Insert Count Increment (1)
 
-                                Abs Ref Name        Value
-                                 1   0  :authority  www.ietf.org
-                                 2   0  :path       /standards/
-                                 3   0  custom-key  custom-value
-                                ^-- acknowledged --^
-                                Size=156
+                              Abs Ref Name        Value
+                               1   0  :authority  www.example.com
+                               2   0  :path       /sample/path
+                               3   0  custom-key  custom-value
+                              ^-- acknowledged --^
+                              Size=160
 
 </pre><a href="#section-b.3-2" class="pilcrow">¶</a>
 </div>
@@ -3614,42 +3614,43 @@ section was not processed by sending a stream cancellation.<a href="#section-b.4
 Stream: Encoder
 02                  | Duplicate (Relative Index=2)
 
-                                Abs Ref Name        Value
-                                 1   0  :authority  www.ietf.org
-                                 2   0  :path       /standards/
-                                 3   0  custom-key  custom-value
-                                ^-- acknowledged --^
-                                 4   0  :authority  www.ietf.org
-                                Size=210
+                              Abs Ref Name        Value
+                               1   0  :authority  www.example.com
+                               2   0  :path       /sample/path
+                               3   0  custom-key  custom-value
+                              ^-- acknowledged --^
+                               4   0  :authority  www.example.com
+                              Size=217
 
 Stream: 8
 0500                | Required Insert Count = 4, Base = 4
 80                  | Indexed Field Line, Dynamic Table
                     |  Absolute Index = Base(4) - Index(0) = 4
-                    |  (:authority=www.ietf.org)
+                    |  (:authority=www.example.com)
 c1                  | Indexed Field Line, Static Table Index = 1
                     |  (:path=/)
 81                  | Indexed Field Line, Dynamic Table
                     |  Absolute Index = Base(4) - Index(1) = 3
                     |  (custom-key=custom-value)
 
-                                Abs Ref Name        Value
-                                 1   0  :authority  www.ietf.org
-                                 2   0  :path       /standards/
-                                 3   1  custom-key  custom-value
-                                ^-- acknowledged --^
-                                 4   1  :authority  www.ietf.org
-                                Size=210
+                              Abs Ref Name        Value
+                               1   0  :authority  www.example.com
+                               2   0  :path       /sample/path
+                               3   1  custom-key  custom-value
+                              ^-- acknowledged --^
+                               4   1  :authority  www.example.com
+                              Size=217
 
 Stream: Decoder
 48                  | Stream Cancellation (Stream=8)
-                                Abs Ref Name        Value
-                                 1   0  :authority  www.ietf.org
-                                 2   0  :path       /standards/
-                                 3   0  custom-key  custom-value
-                                ^-- acknowledged --^
-                                 4   0  :authority  www.ietf.org
-                                Size=210
+
+                              Abs Ref Name        Value
+                               1   0  :authority  www.example.com
+                               2   0  :path       /sample/path
+                               3   0  custom-key  custom-value
+                              ^-- acknowledged --^
+                               4   0  :authority  www.example.com
+                              Size=215
 
 </pre><a href="#section-b.4-2" class="pilcrow">¶</a>
 </div>
@@ -3669,13 +3670,13 @@ Stream: Encoder
 2d76 616c 7565 32   |  Dynamic Table, Absolute Index=2
                     |  (custom-key=custom-value2)
 
-                                Abs Ref Name        Value
-                                 2   0  :path       /standards/
-                                 3   0  custom-key  custom-value
-                                ^-- acknowledged --^
-                                 4   0  :authority  www.ietf.org
-                                 5   0  custom-key  custom-value2
-                                Size=211
+                              Abs Ref Name        Value
+                               2   0  :path       /sample/path
+                               3   0  custom-key  custom-value
+                              ^-- acknowledged --^
+                               4   0  :authority  www.example.com
+                               5   0  custom-key  custom-value2
+                              Size=215
 </pre><a href="#section-b.5-2" class="pilcrow">¶</a>
 </div>
 </section>
