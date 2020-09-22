@@ -254,23 +254,23 @@ Internet-Draft           QUIC Transport Protocol          September 2020
      21.2.  Amplification Attack . . . . . . . . . . . . . . . . . . 147
      21.3.  Optimistic ACK Attack  . . . . . . . . . . . . . . . . . 147
      21.4.  Request Forgery Attacks  . . . . . . . . . . . . . . . . 148
-       21.4.1.  Control Options for Endpoints  . . . . . . . . . . . 148
-       21.4.2.  Request Forgery with Client Initial Packets  . . . . 149
-       21.4.3.  Request Forgery with Preferred Addresses . . . . . . 150
+       21.4.1.  Control Options for Endpoints  . . . . . . . . . . . 149
+       21.4.2.  Request Forgery with Client Initial Packets  . . . . 150
+       21.4.3.  Request Forgery with Preferred Addresses . . . . . . 151
        21.4.4.  Request Forgery with Spoofed Migration . . . . . . . 151
-       21.4.5.  Generic Request Forgery Countermeasures  . . . . . . 151
-     21.5.  Slowloris Attacks  . . . . . . . . . . . . . . . . . . . 152
+       21.4.5.  Generic Request Forgery Countermeasures  . . . . . . 152
+     21.5.  Slowloris Attacks  . . . . . . . . . . . . . . . . . . . 153
      21.6.  Stream Fragmentation and Reassembly Attacks  . . . . . . 153
-     21.7.  Stream Commitment Attack . . . . . . . . . . . . . . . . 153
+     21.7.  Stream Commitment Attack . . . . . . . . . . . . . . . . 154
      21.8.  Peer Denial of Service . . . . . . . . . . . . . . . . . 154
-     21.9.  Explicit Congestion Notification Attacks . . . . . . . . 154
-     21.10. Stateless Reset Oracle . . . . . . . . . . . . . . . . . 154
-     21.11. Version Downgrade  . . . . . . . . . . . . . . . . . . . 155
-     21.12. Targeted Attacks by Routing  . . . . . . . . . . . . . . 155
-     21.13. Overview of Security Properties  . . . . . . . . . . . . 155
-       21.13.1.  Handshake . . . . . . . . . . . . . . . . . . . . . 156
+     21.9.  Explicit Congestion Notification Attacks . . . . . . . . 155
+     21.10. Stateless Reset Oracle . . . . . . . . . . . . . . . . . 155
+     21.11. Version Downgrade  . . . . . . . . . . . . . . . . . . . 156
+     21.12. Targeted Attacks by Routing  . . . . . . . . . . . . . . 156
+     21.13. Overview of Security Properties  . . . . . . . . . . . . 156
+       21.13.1.  Handshake . . . . . . . . . . . . . . . . . . . . . 157
        21.13.2.  Protected Packets . . . . . . . . . . . . . . . . . 158
-       21.13.3.  Connection Migration  . . . . . . . . . . . . . . . 158
+       21.13.3.  Connection Migration  . . . . . . . . . . . . . . . 159
    22. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 163
      22.1.  Registration Policies for QUIC Registries  . . . . . . . 163
        22.1.1.  Provisional Registrations  . . . . . . . . . . . . . 163
@@ -283,9 +283,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
 
        22.1.2.  Selecting Codepoints . . . . . . . . . . . . . . . . 164
-       22.1.3.  Reclaiming Provisional Codepoints  . . . . . . . . . 164
-       22.1.4.  Permanent Registrations  . . . . . . . . . . . . . . 165
-     22.2.  QUIC Transport Parameter Registry  . . . . . . . . . . . 165
+       22.1.3.  Reclaiming Provisional Codepoints  . . . . . . . . . 165
+       22.1.4.  Permanent Registrations  . . . . . . . . . . . . . . 166
+     22.2.  QUIC Transport Parameter Registry  . . . . . . . . . . . 166
      22.3.  QUIC Frame Types Registry  . . . . . . . . . . . . . . . 167
      22.4.  QUIC Transport Error Codes Registry  . . . . . . . . . . 168
    23. References  . . . . . . . . . . . . . . . . . . . . . . . . . 170
@@ -8274,6 +8274,28 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    these countermeasures could be insufficient if UDP-based services do
    not properly authorize requests.
 
+   Because the migration attack described in Section 21.4.4 is quite
+   powerful and does not have adequate countermeasures, QUIC server
+   implementations should assume that attackers can cause them to
+   generate arbitrary UDP payloads to arbitrary destinations.  QUIC
+   servers SHOULD NOT be deployed in networks that also have
+   inadequately secured UDP endpoints.
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 148]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
+
+   Although it is not generally possible to ensure that clients are not
+   co-located with vulnerable endpoints, this version of QUIC does not
+   allow servers to migrate, thus preventing spoofed migration attacks
+   on clients.  Any future extension which allows server migration MUST
+   also define countermeasures for forgery attacks.
+
 21.4.1.  Control Options for Endpoints
 
    QUIC offers some opportunities for an attacker to influence or
@@ -8282,13 +8304,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    *  initial connection establishment (Section 7), where a server is
       able to choose where a client sends datagrams, for example by
       populating DNS records;
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 148]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
 
    *  preferred addresses (Section 9.6), where a server is able to
       choose where a client sends datagrams; and
@@ -8321,6 +8336,16 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    packet number and placement of frames in packets with some amount of
    reliability.
 
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 149]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
+
    This section assumes that limiting control over datagram content is
    not feasible.  The focus of the mitigations in subsequent sections is
    on limiting the ways in which datagrams that are sent prior to
@@ -8335,16 +8360,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    connection - a client will not send other types of packet to a
    destination that does not understand QUIC or is not willing to accept
    a QUIC connection.
-
-
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 149]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
 
    Initial packet protection (Section 5.2 of [QUIC-TLS]) makes it
    difficult for servers to control the content of Initial packets sent
@@ -8377,6 +8392,16 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    Retry packet validates the server's address, thereby preventing the
    use of subsequent Initial packets for request forgery.
 
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 150]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
+
 21.4.3.  Request Forgery with Preferred Addresses
 
    Servers can specify a preferred address, which clients then migrate
@@ -8393,14 +8418,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    specific to use of preferred addresses and can be implemented by
    endpoints.  The generic measures described in Section 21.4.5 could be
    used as further mitigation.
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 150]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
 
 21.4.4.  Request Forgery with Spoofed Migration
 
@@ -8427,6 +8444,20 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    especially effective against attacks that use spoofing and originate
    from an external network.
 
+
+
+
+
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 151]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
+
 21.4.5.  Generic Request Forgery Countermeasures
 
    The most effective defense against request forgery attacks is to
@@ -8450,14 +8481,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    address [RFC4291] or an address in a private use range [RFC1918] from
    a global, unique-local [RFC4193], or non-private address as a
    potential attempt at request forgery.  Endpoints could refuse to use
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 151]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    these addresses entirely, but that carries a significant risk of
    interfering with legitimate uses.  Endpoints SHOULD NOT refuse to use
    an address unless they have specific knowledge about the network
@@ -8481,6 +8504,16 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    patterns known to be problematic without using them.
 
    Note:  Modifying endpoints to apply these protections is more
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 152]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
+
       efficient than deploying network-based protections, as endpoints
       do not need to perform any additional processing when sending to
       an address that has been validated.
@@ -8502,17 +8535,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    allowed to make, imposing restrictions on the minimum transfer speed
    a connection is allowed to have, and restricting the length of time
    an endpoint is allowed to stay connected.
-
-
-
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 152]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
 
 21.6.  Stream Fragmentation and Reassembly Attacks
 
@@ -8537,6 +8559,17 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    delaying reassembly of STREAM frames, implementing heuristics based
    on the age and duration of reassembly holes, or some combination.
 
+
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 153]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
+
 21.7.  Stream Commitment Attack
 
    An adversarial endpoint can open a large number of streams,
@@ -8560,16 +8593,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    However, setting the limit too low could affect performance when
    applications expect to open large number of streams.
 
-
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 153]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
 21.8.  Peer Denial of Service
 
    QUIC and TLS both contain frames or messages that have legitimate
@@ -8590,6 +8613,18 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    excessive quantities of any non-productive packets as indicative of
    an attack.  Endpoints MAY respond to this condition with a connection
    error, or by dropping packets.
+
+
+
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 154]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
 21.9.  Explicit Congestion Notification Attacks
 
@@ -8618,14 +8653,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    key, for example by changing an IP address or port, then an attacker
    can cause the server to send a stateless reset.  To defend against
    this style of denial of service, endpoints that share a static key
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 154]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    for stateless reset (see Section 10.3.2) MUST be arranged so that
    packets with a given connection ID always arrive at an instance that
    has connection state, unless that connection is no longer active.
@@ -8643,6 +8670,17 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    correct instance, it is better to send a stateless reset than wait
    for the connection to time out.  However, this is acceptable only if
    the routing cannot be influenced by an attacker.
+
+
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 155]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
 21.11.  Version Downgrade
 
@@ -8675,13 +8713,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    QUIC assumes the threat model described in [SEC-CONS] and provides
    protections against many of the attacks that arise from that model.
 
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 155]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    For this purpose, attacks are divided into passive and active
    attacks.  Passive attackers have the capability to read packets from
    the network, while active attackers also have the capability to write
@@ -8699,6 +8730,13 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    Properties of the handshake, protected packets, and connection
    migration are considered separately.
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 156]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
 21.13.1.  Handshake
 
@@ -8729,15 +8767,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    Address validation limits amplification attack targets to addresses
    for which an attacker can observe packets.
 
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 156]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    Prior to validation, endpoints are limited in what they are able to
    send.  During the handshake, a server cannot send more than three
    times the data it receives; clients that initiate new connections or
@@ -8753,6 +8782,17 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    expensive computations at the cost of a single round trip.  After a
    successful handshake, servers can issue new tokens to a client, which
    will allow new connection establishment without incurring this cost.
+
+
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 157]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
 21.13.1.3.  On-Path Handshake Termination
 
@@ -8787,13 +8827,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    mechanism; implementations of incompatible versions will simply fail
    to establish a connection.
 
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 157]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
 21.13.2.  Protected Packets
 
    Packet protection (Section 12.1) provides authentication and
@@ -8807,6 +8840,15 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    which they save observed packets for an offline attack against packet
    protection at a future time; this is true for any observer of any
    packet on any network.
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 158]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
    A blind attacker, one who injects packets without being able to
    observe valid packets for a connection, is unlikely to be successful,
@@ -8842,14 +8884,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    This helps reduce the effects of address spoofing by limiting the
    number of packets sent to a spoofed address.
 
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 158]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    This section describes the intended security properties of connection
    migration when under various types of DoS attacks.
 
@@ -8864,6 +8898,13 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    An on-path attacker can:
 
    *  Inspect packets
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 159]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
    *  Modify IP and UDP packet headers
 
@@ -8896,16 +8937,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
        packets, modifying them so that they fail to decrypt, or other
        methods.
 
-
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 159]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    2.  An on-path attacker can prevent migration to a new path for which
        the attacker is also on-path by causing path validation to fail
        on the new path.
@@ -8919,6 +8950,17 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    5.  An on-path attacker cannot cause an endpoint to accept a packet
        for which it has modified an authenticated portion of that
        packet.
+
+
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 160]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
 21.13.3.2.  Off-Path Active Attacks
 
@@ -8949,19 +8991,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    inject them back into the network, potentially with spoofed source
    and destination addresses.
 
-
-
-
-
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 160]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    For the purposes of this discussion, it is assumed that an off-path
    attacker has the ability to observe, modify, and re-inject a packet
    into the network that will reach the destination endpoint prior to
@@ -8980,6 +9009,14 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    1.  An off-path attacker can race packets and attempt to become a
        "limited" on-path attacker.
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 161]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
    2.  An off-path attacker can cause path validation to succeed for
        forwarded packets with the source address listed as the off-path
@@ -9009,15 +9046,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    arrive before the original copies such that the original packets are
    dropped by the destination endpoint.
 
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 161]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    A limited on-path attacker differs from an on-path attacker in that
    it is not on the original path between endpoints, and therefore the
    original packets sent by an endpoint are still reaching their
@@ -9036,6 +9064,15 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    *  Reorder packets
 
    A limited on-path attacker cannot:
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 162]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
    *  Delay packets so that they arrive later than packets sent on the
       original path
@@ -9066,14 +9103,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    Note that these guarantees are the same guarantees provided for any
    NAT, for the same reasons.
 
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 162]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
 22.  IANA Considerations
 
    This document establishes several registries for the management of
@@ -9093,6 +9122,13 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    registrations only require the inclusion of the codepoint value and
    contact information.  However, provisional registrations could be
    reclaimed and reassigned for another purpose.
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 163]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
    Provisional registrations require Expert Review, as defined in
    Section 4.5 of [RFC8126].  Designated expert(s) are advised that only
@@ -9121,15 +9157,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    Notes:  Supplementary notes about the registration.
 
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 163]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    Provisional registrations MAY omit the Specification and Notes
    fields, plus any additional fields that might be required for a
    permanent registration.  The Date field is not required as part of
@@ -9147,6 +9174,17 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    intended for use by specifications that are developed through the
    standards process [STD] and its allocation MUST be negotiated with
    IANA before use.
+
+
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 164]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
    For codepoints that are encoded in variable-length integers
    (Section 16), such as frame types, codepoints that encode to four or
@@ -9175,17 +9213,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    codepoint is known.  The expert(s) are advised to allow at least four
    weeks for responses.
 
-
-
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 164]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    If any use of the codepoints is identified by this search or a
    request to update the registration is made, the codepoint MUST NOT be
    reclaimed.  Instead, the date on the registration is updated.  A note
@@ -9201,6 +9228,19 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    not to determine whether there is no use of the codepoint, but to
    determine that the registration is an accurate representation of any
    deployed usage.
+
+
+
+
+
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 165]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
 22.1.4.  Permanent Registrations
 
@@ -9234,14 +9274,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    IANA [SHALL add/has added] a registry for "QUIC Transport Parameters"
    under a "QUIC" heading.
 
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 165]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    The "QUIC Transport Parameters" registry governs a 62-bit space.
    This registry follows the registration policy from Section 22.1.
    Permanent registrations in this registry are assigned using the
@@ -9253,38 +9285,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    Parameter Name:  A short mnemonic for the parameter.
 
    The initial contents of this registry are shown in Table 6.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
