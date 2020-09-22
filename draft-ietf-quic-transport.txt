@@ -5846,8 +5846,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    sequence 7b bd decodes to 15293; and the single byte 25 decodes to 37
    (as does the two byte sequence 40 25).
 
-   Versions (Section 15) and error codes (Section 20) are described
-   using integers, but do not use this encoding.
+   Versions (Section 15) and packet numbers sent in the header
+   (Section 17.1) are described using integers, but do not use this
+   encoding.
 
 17.  Packet Formats
 
@@ -5873,7 +5874,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    After an acknowledgement is received for a packet number space, the
    sender MUST use a packet number size able to represent more than
    twice as large a range than the difference between the largest
-   acknowledged packet and packet number being sent.  A peer receiving
 
 
 
@@ -5882,6 +5882,7 @@ Iyengar & Thomson         Expires 26 March 2021               [Page 105]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
+   acknowledged packet and packet number being sent.  A peer receiving
    the packet will then correctly decode the packet number, unless the
    packet is delayed in transit such that it arrives after many higher-
    numbered packets have been received.  An endpoint SHOULD use a large
@@ -5929,7 +5930,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
      Source Connection ID (0..160),
    }
 
-                    Figure 13: Long Header Packet Format
 
 
 
@@ -5937,6 +5937,8 @@ Iyengar & Thomson         Expires 26 March 2021               [Page 106]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
+
+                    Figure 13: Long Header Packet Format
 
    Long headers are used for packets that are sent prior to the
    establishment of 1-RTT keys.  Once 1-RTT keys are available, a sender
@@ -5978,13 +5980,11 @@ Internet-Draft           QUIC Transport Protocol          September 2020
       of this field in more detail.
 
    Source Connection ID Length:  The byte following the Destination
-      Connection ID contains the length in bytes of the Source
-      Connection ID field that follows it.  This length is encoded as a
-      8-bit unsigned integer.  In QUIC version 1, this value MUST NOT
-      exceed 20 bytes.  Endpoints that receive a version 1 long header
-      with a value larger than 20 MUST drop the packet.  In order to
-      properly form a Version Negotiation packet, servers SHOULD be able
-      to read longer connection IDs from other QUIC versions.
+
+
+
+
+
 
 
 
@@ -5993,6 +5993,14 @@ Iyengar & Thomson         Expires 26 March 2021               [Page 107]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
+
+      Connection ID contains the length in bytes of the Source
+      Connection ID field that follows it.  This length is encoded as a
+      8-bit unsigned integer.  In QUIC version 1, this value MUST NOT
+      exceed 20 bytes.  Endpoints that receive a version 1 long header
+      with a value larger than 20 MUST drop the packet.  In order to
+      properly form a Version Negotiation packet, servers SHOULD be able
+      to read longer connection IDs from other QUIC versions.
 
    Source Connection ID:  The Source Connection ID field follows the
       Source Connection ID Length field, which indicates the length of
@@ -6028,16 +6036,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    packets in this version of QUIC contain these additional fields:
 
    Reserved Bits:  Two bits (those with a mask of 0x0c) of byte 0 are
-      reserved across multiple packet types.  These bits are protected
-      using header protection; see Section 5.4 of [QUIC-TLS].  The value
-      included prior to protection MUST be set to 0.  An endpoint MUST
-      treat receipt of a packet that has a non-zero value for these bits
-      after removing both packet and header protection as a connection
-      error of type PROTOCOL_VIOLATION.  Discarding such a packet after
-      only removing header protection can expose the endpoint to
-      attacks; see Section 9.3 of [QUIC-TLS].
 
-   Packet Number Length:  In packet types that contain a Packet Number
+
 
 
 
@@ -6050,6 +6050,16 @@ Iyengar & Thomson         Expires 26 March 2021               [Page 108]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
+      reserved across multiple packet types.  These bits are protected
+      using header protection; see Section 5.4 of [QUIC-TLS].  The value
+      included prior to protection MUST be set to 0.  An endpoint MUST
+      treat receipt of a packet that has a non-zero value for these bits
+      after removing both packet and header protection as a connection
+      error of type PROTOCOL_VIOLATION.  Discarding such a packet after
+      only removing header protection can expose the endpoint to
+      attacks; see Section 9.3 of [QUIC-TLS].
+
+   Packet Number Length:  In packet types that contain a Packet Number
       field, the least significant two bits (those with a mask of 0x03)
       of byte 0 contain the length of the packet number, encoded as an
       unsigned, two-bit integer that is one less than the length of the
@@ -6089,6 +6099,13 @@ Internet-Draft           QUIC Transport Protocol          September 2020
      Supported Version (32) ...,
    }
 
+
+
+Iyengar & Thomson         Expires 26 March 2021               [Page 109]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
+
                    Figure 14: Version Negotiation Packet
 
    The value in the Unused field is selected randomly by the server.
@@ -6098,13 +6115,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    The Version field of a Version Negotiation packet MUST be set to
    0x00000000.
-
-
-
-Iyengar & Thomson         Expires 26 March 2021               [Page 109]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
 
    The server MUST include the value from the Source Connection ID field
    of the packet it receives in the Destination Connection ID field.
@@ -6141,16 +6151,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    An Initial packet uses long headers with a type value of 0x0.  It
    carries the first CRYPTO frames sent by the client and server to
    perform key exchange, and carries ACKs in either direction.
-
-
-
-
-
-
-
-
-
-
 
 
 
