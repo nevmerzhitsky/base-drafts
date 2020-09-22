@@ -739,7 +739,7 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    This document does not define an API for QUIC, but instead defines a
    set of functions on streams that application protocols can rely upon.
-   An application protocol can assume that an QUIC implementation
+   An application protocol can assume that a QUIC implementation
    provides an interface that includes the operations described in this
    section.  An implementation designed for use with a specific
    application protocol might provide only those operations that are
@@ -1310,8 +1310,7 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    implementation to avoid excessive buffering of data; see [QUIC-TLS].
    To avoid excessive buffering at multiple layers, QUIC implementations
    SHOULD provide an interface for the cryptographic protocol
-   implementation to communicate its buffering limits to the QUIC
-   implementation.
+   implementation to communicate its buffering limits.
 
 4.1.  Data Flow Control
 
@@ -1335,9 +1334,10 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    receiver sends MAX_STREAM_DATA (Section 19.10) or MAX_DATA
    (Section 19.9) frames to the sender to advertise larger limits.
 
-   A receiver can advertise a larger limit for a stream by sending a
-   MAX_STREAM_DATA frame with the corresponding stream ID.  A
-   MAX_STREAM_DATA frame indicates the maximum absolute byte offset of a
+
+
+
+
 
 
 
@@ -1346,6 +1346,9 @@ Iyengar & Thomson         Expires 26 March 2021                [Page 24]
 Internet-Draft           QUIC Transport Protocol          September 2020
 
 
+   A receiver can advertise a larger limit for a stream by sending a
+   MAX_STREAM_DATA frame with the corresponding stream ID.  A
+   MAX_STREAM_DATA frame indicates the maximum absolute byte offset of a
    stream.  A receiver could determine the flow control offset to be
    advertised based on the current offset of data consumed on that
    stream.
@@ -1388,9 +1391,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    To avoid blocking a sender, a receiver MAY send a MAX_STREAM_DATA or
    MAX_DATA frame multiple times within a round trip or send it early
    enough to allow time for loss of the frame and subsequent recovery.
-
-
-
 
 
 
@@ -1527,8 +1527,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    frame, advertising a smaller limit has no effect.  A receiver MUST
    ignore any MAX_STREAMS frame that does not increase the stream limit.
 
-   As with stream and connection flow control, this document leaves to
-   implementations the decisions of when and how many streams should be
+   As with stream and connection flow control, this document leaves
+   implementations to decide when and how many streams should be
    advertised to a peer via MAX_STREAMS.  Implementations might choose
    to increase limits as streams are closed, to keep the number of
    streams available to peers roughly consistent.

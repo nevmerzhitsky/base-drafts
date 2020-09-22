@@ -2099,7 +2099,7 @@ by the application to determine how to allocate resources to active streams.<a h
         </h3>
 <p id="section-2.4-1">This document does not define an API for QUIC, but instead defines a set of
 functions on streams that application protocols can rely upon.  An application
-protocol can assume that an QUIC implementation provides an interface that
+protocol can assume that a QUIC implementation provides an interface that
 includes the operations described in this section.  An implementation designed
 for use with a specific application protocol might provide only those operations
 that are used by that protocol.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
@@ -2546,8 +2546,7 @@ described in <a href="#controlling-concurrency" class="xref">Section 4.5</a>.<a 
 data.  QUIC relies on the cryptographic protocol implementation to avoid
 excessive buffering of data; see <span>[<a href="#QUIC-TLS" class="xref">QUIC-TLS</a>]</span>. To avoid excessive buffering at
 multiple layers, QUIC implementations SHOULD provide an interface for the
-cryptographic protocol implementation to communicate its buffering limits to the
-QUIC implementation.<a href="#section-4-3" class="pilcrow">¶</a></p>
+cryptographic protocol implementation to communicate its buffering limits.<a href="#section-4-3" class="pilcrow">¶</a></p>
 <div id="data-flow-control">
 <section id="section-4.1">
         <h3 id="name-data-flow-control">
@@ -2705,8 +2704,8 @@ this as a connection error of type STREAM_LIMIT_ERROR (<a href="#error-handling"
 <p id="section-4.5-4">Once a receiver advertises a stream limit using the MAX_STREAMS frame,
 advertising a smaller limit has no effect.  A receiver MUST ignore any
 MAX_STREAMS frame that does not increase the stream limit.<a href="#section-4.5-4" class="pilcrow">¶</a></p>
-<p id="section-4.5-5">As with stream and connection flow control, this document leaves to
-implementations the decisions of when and how many streams should be advertised
+<p id="section-4.5-5">As with stream and connection flow control, this document leaves implementations
+to decide when and how many streams should be advertised
 to a peer via MAX_STREAMS.  Implementations might choose to increase limits as
 streams are closed, to keep the number of streams available to peers roughly
 consistent.<a href="#section-4.5-5" class="pilcrow">¶</a></p>
