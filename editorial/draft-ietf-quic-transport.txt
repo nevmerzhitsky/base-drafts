@@ -358,13 +358,12 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    to support the structured exchange of data by an application
    protocol.
 
-   Within a connection, streams are the means by which an application
-   protocol exchanges information.  Streams are ordered sequences of
-   bytes.  Two types of stream can be created: bidirectional streams,
-   which allow both endpoints to send data; and unidirectional streams,
-   which allow a single endpoint to send data.  A credit-based scheme is
-   used to limit stream creation and to bound the amount of data that
-   can be sent.
+   Streams are the means by which an application protocol exchanges
+   information.  Streams are ordered sequences of bytes.  Two types of
+   stream can be created: bidirectional streams, which allow both
+   endpoints to send data; and unidirectional streams, which allow a
+   single endpoint to send data.  A credit-based scheme is used to limit
+   stream creation and to bound the amount of data that can be sent.
 
    The QUIC handshake combines negotiation of cryptographic and
    transport parameters.  The handshake is structured to permit the
@@ -382,10 +381,11 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    carried in UDP datagrams ([UDP]) to better facilitate deployment in
    existing systems and networks.
 
-
-
-
-
+   Once established, multiple options are provided for connection
+   termination.  Applications can manage a graceful shutdown, endpoints
+   can negotiate a timeout period, errors can cause immediate connection
+   teardown, and a stateless mechanism provides for termination of
+   connections after one endpoint has lost state.
 
 
 
@@ -393,12 +393,6 @@ Iyengar & Thomson         Expires 26 March 2021                 [Page 7]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
-
-   Once established, multiple options are provided for connection
-   termination.  Applications can manage a graceful shutdown, endpoints
-   can negotiate a timeout period, errors can cause immediate connection
-   teardown, and a stateless mechanism provides for termination of
-   connections after one endpoint has lost state.
 
 1.1.  Document Structure
 
@@ -442,6 +436,12 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
       -  Section 14 specifies rules for managing the size of packets.
 
+   *  Finally, encoding details of QUIC protocol elements are described
+      in:
+
+      -  Section 15 (Versions),
+
+      -  Section 16 (Integer Encoding),
 
 
 
@@ -449,13 +449,6 @@ Iyengar & Thomson         Expires 26 March 2021                 [Page 8]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
-
-   *  Finally, encoding details of QUIC protocol elements are described
-      in:
-
-      -  Section 15 (Versions),
-
-      -  Section 16 (Integer Encoding),
 
       -  Section 17 (Packet Headers),
 
@@ -498,6 +491,13 @@ Internet-Draft           QUIC Transport Protocol          September 2020
       send an acknowledgment; see Section 13.2.1.
 
    Endpoint:  An entity that can participate in a QUIC connection by
+      generating, receiving, and processing QUIC packets.  There are
+      only two types of endpoint in QUIC: client and server.
+
+   Client:  The endpoint that initiates a QUIC connection.
+
+   Server:  The endpoint that accepts a QUIC connection.
+
 
 
 
@@ -505,13 +505,6 @@ Iyengar & Thomson         Expires 26 March 2021                 [Page 9]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
-
-      generating, receiving, and processing QUIC packets.  There are
-      only two types of endpoint in QUIC: client and server.
-
-   Client:  The endpoint that initiates a QUIC connection.
-
-   Server:  The endpoint that accepts a QUIC connection.
 
    Address:  When used without qualification, the tuple of IP version,
       IP address, and UDP port number that represents one end of a
@@ -554,6 +547,13 @@ Internet-Draft           QUIC Transport Protocol          September 2020
       an octet boundary
 
    x (?) = C:  Indicates that x has a fixed value of C with the length
+      described by ?, as above
+
+   x (?) = C..D:  Indicates that x has a value in the range from C to D,
+      inclusive, with the length described by ?, as above
+
+   [x (E)]:  Indicates that x is optional (and has length of E)
+
 
 
 
@@ -561,13 +561,6 @@ Iyengar & Thomson         Expires 26 March 2021                [Page 10]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
-
-      described by ?, as above
-
-   x (?) = C..D:  Indicates that x has a value in the range from C to D,
-      inclusive, with the length described by ?, as above
-
-   [x (E)]:  Indicates that x is optional (and has length of E)
 
    x (E) ...:  Indicates that x is repeated zero or more times (and that
       each instance is length E)
@@ -607,17 +600,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    for, and close a stream.  Streams can also be long-lived and can last
    the entire duration of a connection.
 
-
-
-
-
-
-
-Iyengar & Thomson         Expires 26 March 2021                [Page 11]
-
-Internet-Draft           QUIC Transport Protocol          September 2020
-
-
    Streams can be created by either endpoint, can concurrently send data
    interleaved with other streams, and can be cancelled.  QUIC does not
    provide any means of ensuring ordering between bytes on different
@@ -627,6 +609,14 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    concurrently and for an arbitrary amount of data to be sent on any
    stream, subject to flow control constraints and stream limits; see
    Section 4.
+
+
+
+
+Iyengar & Thomson         Expires 26 March 2021                [Page 11]
+
+Internet-Draft           QUIC Transport Protocol          September 2020
+
 
 2.1.  Stream Types and Identifiers
 
@@ -667,18 +657,22 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
                           Table 1: Stream ID Types
 
+   The stream space for each type begins at the minimum value (0x0
+   through 0x3 respectively); successive streams of each type are
+   created with numerically increasing stream IDs.  A stream ID that is
+   used out of order results in all streams of that type with lower-
+   numbered stream IDs also being opened.
+
+
+
+
+
 
 
 Iyengar & Thomson         Expires 26 March 2021                [Page 12]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
-
-   The stream space for each type begins at the minimum value (0x0
-   through 0x3 respectively); successive streams of each type are
-   created with numerically increasing stream IDs.  A stream ID that is
-   used out of order results in all streams of that type with lower-
-   numbered stream IDs also being opened.
 
 2.2.  Sending and Receiving Data
 
@@ -721,6 +715,12 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    information.  Instead, it relies on receiving priority information
    from the application.
 
+   A QUIC implementation SHOULD provide ways in which an application can
+   indicate the relative priority of streams.  An implementation uses
+   information provided by the application to determine how to allocate
+   resources to active streams.
+
+
 
 
 
@@ -729,11 +729,6 @@ Iyengar & Thomson         Expires 26 March 2021                [Page 13]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
-
-   A QUIC implementation SHOULD provide ways in which an application can
-   indicate the relative priority of streams.  An implementation uses
-   information provided by the application to determine how to allocate
-   resources to active streams.
 
 2.4.  Operations on Streams
 
@@ -777,6 +772,11 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    components.  Two state machines are described: one for the streams on
    which an endpoint transmits data (Section 3.1), and another for
    streams on which an endpoint receives data (Section 3.2).
+
+
+
+
+
 
 
 
