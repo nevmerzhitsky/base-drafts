@@ -3003,8 +3003,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    address.
 
    Path validation does not validate that a peer can send in the return
-   direction.  Acknowledgments cannot be used for path validation as
-   they contain insufficient entropy and might be spoofed.  Endpoints
+   direction.  Acknowledgments cannot be used for return path validation
+   as they contain insufficient entropy and might be spoofed.  Endpoints
    independently determine reachability on each direction of a path, and
    therefore return reachability can only be established by the peer.
 
@@ -3028,12 +3028,13 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    An endpoint MAY include other frames with the PATH_CHALLENGE and
    PATH_RESPONSE frames used for path validation.  In particular, an
-   endpoint can include PADDING with a PATH_CHALLENGE for Path Maximum
-   Transfer Unit (PMTU) discovery (see Section 14.2.1); it can also
-   include a PATH_CHALLENGE with its own PATH_RESPONSE.
+   endpoint can include PADDING frames with a PATH_CHALLENGE frame for
+   Path Maximum Transfer Unit (PMTU) discovery (see Section 14.2.1); it
+   can also include a PATH_CHALLENGE frame with its own PATH_RESPONSE
+   frame.
 
    An endpoint uses a new connection ID for probes sent from a new local
-   address (See Section 9.5).  So when probing a new path, an endpoint
+   address; see Section 9.5.  When probing a new path, an endpoint
    expecting responses on the new path needs to ensure that its peer has
    an unused connection ID.  Sending NEW_CONNECTION_ID and
    PATH_CHALLENGE frames in the same packet ensures that an unused
@@ -3041,9 +3042,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    An endpoint can choose to simultaneously probe multiple paths.  The
    number of simultaneous paths used for probes is limited by the number
-   of extra Connection IDs its peer has previously supplied, since each
+   of extra connection IDs its peer has previously supplied, since each
    new local address used for a probe requires a previously unused
-   Connection ID.
+   connection ID.
 
 8.2.1.  Initiating Path Validation
 
@@ -3055,9 +3056,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    PATH_CHALLENGE frames in a single packet.
 
    An endpoint SHOULD NOT probe a new path with packets containing a
-   PATH_CHALLENGE more frequently than it would send an Initial packet.
-   This ensures connection migration is no more load on a new path than
-   establishing a new connection.
+   PATH_CHALLENGE frame more frequently than it would send an Initial
+   packet.  This ensures that connection migration is no more load on a
+   new path than establishing a new connection.
 
    The endpoint MUST use unpredictable data in every PATH_CHALLENGE
    frame so that it can associate the peer's response with the
@@ -3072,7 +3073,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    PATH_RESPONSE can be sent on any network path.  An endpoint MUST NOT
    delay transmission of a packet containing a PATH_RESPONSE frame
    unless constrained by congestion control.
-
 
 
 
@@ -3252,8 +3252,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
    In response to such a packet, an endpoint MUST send subsequent
    packets to the new peer address and MUST initiate path validation
-   (Section 8.2) to verify the peer's ownership of the address if it has
-   not already.
+   (Section 8.2) to verify the peer's ownership of the address if
+   validation is not already underway.
 
    An endpoint MAY send data to an unvalidated peer address, but it MUST
    protect against potential attacks as described in Section 9.3.1 and
