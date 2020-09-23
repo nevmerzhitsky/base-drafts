@@ -4,8 +4,8 @@
 
 QUIC                                                      M. Bishop, Ed.
 Internet-Draft                                                    Akamai
-Intended status: Standards Track                       22 September 2020
-Expires: 26 March 2021
+Intended status: Standards Track                       23 September 2020
+Expires: 27 March 2021
 
 
              Hypertext Transfer Protocol Version 3 (HTTP/3)
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 March 2021.
+   This Internet-Draft will expire on 27 March 2021.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 1]
+Bishop                    Expires 27 March 2021                 [Page 1]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 2]
+Bishop                    Expires 27 March 2021                 [Page 2]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -155,7 +155,7 @@ Internet-Draft                   HTTP/3                   September 2020
    Appendix A.  Considerations for Transitioning from HTTP/2 . . . .  56
      A.1.  Streams . . . . . . . . . . . . . . . . . . . . . . . . .  56
      A.2.  HTTP Frame Types  . . . . . . . . . . . . . . . . . . . .  57
-       A.2.1.  Prioritization Differences  . . . . . . . . . . . . .  58
+       A.2.1.  Prioritization Differences  . . . . . . . . . . . . .  57
        A.2.2.  Field Compression Differences . . . . . . . . . . . .  58
        A.2.3.  Flow Control Differences  . . . . . . . . . . . . . .  58
        A.2.4.  Guidance for New Frame Type Definitions . . . . . . .  58
@@ -165,7 +165,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 3]
+Bishop                    Expires 27 March 2021                 [Page 3]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -176,34 +176,34 @@ Internet-Draft                   HTTP/3                   September 2020
      B.2.  Since draft-ietf-quic-http-28 . . . . . . . . . . . . . .  63
      B.3.  Since draft-ietf-quic-http-27 . . . . . . . . . . . . . .  63
      B.4.  Since draft-ietf-quic-http-26 . . . . . . . . . . . . . .  63
-     B.5.  Since draft-ietf-quic-http-25 . . . . . . . . . . . . . .  64
-     B.6.  Since draft-ietf-quic-http-24 . . . . . . . . . . . . . .  64
+     B.5.  Since draft-ietf-quic-http-25 . . . . . . . . . . . . . .  63
+     B.6.  Since draft-ietf-quic-http-24 . . . . . . . . . . . . . .  63
      B.7.  Since draft-ietf-quic-http-23 . . . . . . . . . . . . . .  64
      B.8.  Since draft-ietf-quic-http-22 . . . . . . . . . . . . . .  64
      B.9.  Since draft-ietf-quic-http-21 . . . . . . . . . . . . . .  65
      B.10. Since draft-ietf-quic-http-20 . . . . . . . . . . . . . .  65
      B.11. Since draft-ietf-quic-http-19 . . . . . . . . . . . . . .  66
      B.12. Since draft-ietf-quic-http-18 . . . . . . . . . . . . . .  66
-     B.13. Since draft-ietf-quic-http-17 . . . . . . . . . . . . . .  67
-     B.14. Since draft-ietf-quic-http-16 . . . . . . . . . . . . . .  67
+     B.13. Since draft-ietf-quic-http-17 . . . . . . . . . . . . . .  66
+     B.14. Since draft-ietf-quic-http-16 . . . . . . . . . . . . . .  66
      B.15. Since draft-ietf-quic-http-15 . . . . . . . . . . . . . .  67
      B.16. Since draft-ietf-quic-http-14 . . . . . . . . . . . . . .  67
-     B.17. Since draft-ietf-quic-http-13 . . . . . . . . . . . . . .  68
+     B.17. Since draft-ietf-quic-http-13 . . . . . . . . . . . . . .  67
      B.18. Since draft-ietf-quic-http-12 . . . . . . . . . . . . . .  68
      B.19. Since draft-ietf-quic-http-11 . . . . . . . . . . . . . .  68
      B.20. Since draft-ietf-quic-http-10 . . . . . . . . . . . . . .  68
      B.21. Since draft-ietf-quic-http-09 . . . . . . . . . . . . . .  68
-     B.22. Since draft-ietf-quic-http-08 . . . . . . . . . . . . . .  69
-     B.23. Since draft-ietf-quic-http-07 . . . . . . . . . . . . . .  69
+     B.22. Since draft-ietf-quic-http-08 . . . . . . . . . . . . . .  68
+     B.23. Since draft-ietf-quic-http-07 . . . . . . . . . . . . . .  68
      B.24. Since draft-ietf-quic-http-06 . . . . . . . . . . . . . .  69
      B.25. Since draft-ietf-quic-http-05 . . . . . . . . . . . . . .  69
      B.26. Since draft-ietf-quic-http-04 . . . . . . . . . . . . . .  69
-     B.27. Since draft-ietf-quic-http-03 . . . . . . . . . . . . . .  70
-     B.28. Since draft-ietf-quic-http-02 . . . . . . . . . . . . . .  70
-     B.29. Since draft-ietf-quic-http-01 . . . . . . . . . . . . . .  70
+     B.27. Since draft-ietf-quic-http-03 . . . . . . . . . . . . . .  69
+     B.28. Since draft-ietf-quic-http-02 . . . . . . . . . . . . . .  69
+     B.29. Since draft-ietf-quic-http-01 . . . . . . . . . . . . . .  69
      B.30. Since draft-ietf-quic-http-00 . . . . . . . . . . . . . .  70
-     B.31. Since draft-shade-quic-http2-mapping-00 . . . . . . . . .  71
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  71
+     B.31. Since draft-shade-quic-http2-mapping-00 . . . . . . . . .  70
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  70
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  72
 
 1.  Introduction
@@ -221,7 +221,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 4]
+Bishop                    Expires 27 March 2021                 [Page 4]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -277,7 +277,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 5]
+Bishop                    Expires 27 March 2021                 [Page 5]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -333,7 +333,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 6]
+Bishop                    Expires 27 March 2021                 [Page 6]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -389,7 +389,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 7]
+Bishop                    Expires 27 March 2021                 [Page 7]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -445,7 +445,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 8]
+Bishop                    Expires 27 March 2021                 [Page 8]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -501,7 +501,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                 [Page 9]
+Bishop                    Expires 27 March 2021                 [Page 9]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -557,7 +557,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 10]
+Bishop                    Expires 27 March 2021                [Page 10]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -613,7 +613,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 11]
+Bishop                    Expires 27 March 2021                [Page 11]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -669,7 +669,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 12]
+Bishop                    Expires 27 March 2021                [Page 12]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -725,7 +725,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 13]
+Bishop                    Expires 27 March 2021                [Page 13]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -781,7 +781,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 14]
+Bishop                    Expires 27 March 2021                [Page 14]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -800,14 +800,14 @@ Internet-Draft                   HTTP/3                   September 2020
    ":method":  Contains the HTTP method (Section 8 of [SEMANTICS])
 
    ":scheme":  Contains the scheme portion of the target URI
-      (Section 3.1 of [RFC3986])
+      (Section 3.1 of [URI])
 
       ":scheme" is not restricted to "http" and "https" schemed URIs.  A
       proxy or gateway can translate requests for non-HTTP schemes,
       enabling the use of HTTP to interact with non-HTTP services.
 
    ":authority":  Contains the authority portion of the target URI
-      (Section 3.2 of [RFC3986]).  The authority MUST NOT include the
+      (Section 3.2 of [URI]).  The authority MUST NOT include the
       deprecated "userinfo" subcomponent for "http" or "https" schemed
       URIs.
 
@@ -837,7 +837,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 15]
+Bishop                    Expires 27 March 2021                [Page 15]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -893,7 +893,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 16]
+Bishop                    Expires 27 March 2021                [Page 16]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -949,7 +949,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 17]
+Bishop                    Expires 27 March 2021                [Page 17]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 18]
+Bishop                    Expires 27 March 2021                [Page 18]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 19]
+Bishop                    Expires 27 March 2021                [Page 19]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 20]
+Bishop                    Expires 27 March 2021                [Page 20]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 21]
+Bishop                    Expires 27 March 2021                [Page 21]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 22]
+Bishop                    Expires 27 March 2021                [Page 22]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1285,7 +1285,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 23]
+Bishop                    Expires 27 March 2021                [Page 23]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 24]
+Bishop                    Expires 27 March 2021                [Page 24]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 25]
+Bishop                    Expires 27 March 2021                [Page 25]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 26]
+Bishop                    Expires 27 March 2021                [Page 26]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1509,7 +1509,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 27]
+Bishop                    Expires 27 March 2021                [Page 27]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 28]
+Bishop                    Expires 27 March 2021                [Page 28]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 29]
+Bishop                    Expires 27 March 2021                [Page 29]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 30]
+Bishop                    Expires 27 March 2021                [Page 30]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 31]
+Bishop                    Expires 27 March 2021                [Page 31]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 32]
+Bishop                    Expires 27 March 2021                [Page 32]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 33]
+Bishop                    Expires 27 March 2021                [Page 33]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1901,7 +1901,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 34]
+Bishop                    Expires 27 March 2021                [Page 34]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -1957,7 +1957,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 35]
+Bishop                    Expires 27 March 2021                [Page 35]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2013,7 +2013,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 36]
+Bishop                    Expires 27 March 2021                [Page 36]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2069,7 +2069,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 37]
+Bishop                    Expires 27 March 2021                [Page 37]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2125,7 +2125,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 38]
+Bishop                    Expires 27 March 2021                [Page 38]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2181,7 +2181,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 39]
+Bishop                    Expires 27 March 2021                [Page 39]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2237,7 +2237,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 40]
+Bishop                    Expires 27 March 2021                [Page 40]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2293,7 +2293,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 41]
+Bishop                    Expires 27 March 2021                [Page 41]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2349,7 +2349,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 42]
+Bishop                    Expires 27 March 2021                [Page 42]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2405,7 +2405,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 43]
+Bishop                    Expires 27 March 2021                [Page 43]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2461,7 +2461,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 44]
+Bishop                    Expires 27 March 2021                [Page 44]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2517,7 +2517,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 45]
+Bishop                    Expires 27 March 2021                [Page 45]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2573,7 +2573,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 46]
+Bishop                    Expires 27 March 2021                [Page 46]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2629,7 +2629,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 47]
+Bishop                    Expires 27 March 2021                [Page 47]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2685,7 +2685,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 48]
+Bishop                    Expires 27 March 2021                [Page 48]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2741,7 +2741,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 49]
+Bishop                    Expires 27 March 2021                [Page 49]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2797,7 +2797,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 50]
+Bishop                    Expires 27 March 2021                [Page 50]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2853,7 +2853,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 51]
+Bishop                    Expires 27 March 2021                [Page 51]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2909,7 +2909,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 52]
+Bishop                    Expires 27 March 2021                [Page 52]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2965,7 +2965,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-Bishop                    Expires 26 March 2021                [Page 53]
+Bishop                    Expires 27 March 2021                [Page 53]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -2982,14 +2982,14 @@ Internet-Draft                   HTTP/3                   September 2020
 
    [QPACK]    Krasic, C., Bishop, M., and A. Frindell, Ed., "QPACK:
               Header Compression for HTTP over QUIC", Work in Progress,
-              Internet-Draft, draft-ietf-quic-qpack-latest, 22 September
+              Internet-Draft, draft-ietf-quic-qpack-latest, 23 September
               2020, <https://tools.ietf.org/html/draft-ietf-quic-qpack-
               latest>.
 
    [QUIC-TRANSPORT]
               Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
               Multiplexed and Secure Transport", Work in Progress,
-              Internet-Draft, draft-ietf-quic-transport-latest, 22
+              Internet-Draft, draft-ietf-quic-transport-latest, 23
               September 2020, <https://tools.ietf.org/html/draft-ietf-
               quic-transport-latest>.
 
@@ -3001,11 +3001,6 @@ Internet-Draft                   HTTP/3                   September 2020
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
-              Resource Identifier (URI): Generic Syntax", STD 66,
-              RFC 3986, DOI 10.17487/RFC3986, January 2005,
-              <https://www.rfc-editor.org/info/rfc3986>.
 
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
               Extensions: Extension Definitions", RFC 6066,
@@ -3019,16 +3014,17 @@ Internet-Draft                   HTTP/3                   September 2020
               Security (TLS)", RFC 6125, DOI 10.17487/RFC6125, March
               2011, <https://www.rfc-editor.org/info/rfc6125>.
 
-
-
-Bishop                    Expires 26 March 2021                [Page 54]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
               <https://www.rfc-editor.org/info/rfc6265>.
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 54]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
               "Transport Layer Security (TLS) Application-Layer Protocol
@@ -3055,6 +3051,11 @@ Internet-Draft                   HTTP/3                   September 2020
               <http://www.ietf.org/internet-drafts/draft-ietf-httpbis-
               semantics-11.txt>.
 
+   [URI]      Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
+              Resource Identifier (URI): Generic Syntax", STD 66,
+              RFC 3986, DOI 10.17487/RFC3986, January 2005,
+              <https://www.rfc-editor.org/info/rfc3986>.
+
 12.2.  Informative References
 
    [BREACH]   Gluck, Y., Harris, N., and A. Prado, "BREACH: Reviving the
@@ -3076,8 +3077,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
 
 
-
-Bishop                    Expires 26 March 2021                [Page 55]
+Bishop                    Expires 27 March 2021                [Page 55]
 
 Internet-Draft                   HTTP/3                   September 2020
 
@@ -3098,11 +3098,6 @@ Internet-Draft                   HTTP/3                   September 2020
    [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/info/rfc8446>.
-
-   [URI]      Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
-              Resource Identifier (URI): Generic Syntax", STD 66,
-              RFC 3986, DOI 10.17487/RFC3986, January 2005,
-              <https://www.rfc-editor.org/info/rfc3986>.
 
 Appendix A.  Considerations for Transitioning from HTTP/2
 
@@ -3130,19 +3125,19 @@ A.1.  Streams
    that it is likely that other limits in QUIC are reached first, such
    as the limit on the connection flow control window.
 
-
-
-
-Bishop                    Expires 26 March 2021                [Page 56]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    In contrast to HTTP/2, stream concurrency in HTTP/3 is managed by
    QUIC.  QUIC considers a stream closed when all data has been received
    and sent data has been acknowledged by the peer.  HTTP/2 considers a
    stream closed when the frame containing the END_STREAM bit has been
    committed to the transport.  As a result, the stream for an
+
+
+
+Bishop                    Expires 27 March 2021                [Page 56]
+
+Internet-Draft                   HTTP/3                   September 2020
+
+
    equivalent exchange could remain "active" for a longer period of
    time.  HTTP/3 servers might choose to permit a larger number of
    concurrent client-initiated bidirectional streams to achieve
@@ -3185,20 +3180,19 @@ A.2.  HTTP Frame Types
    general guidance to extension frame implementors converting an HTTP/2
    extension to HTTP/3.
 
-
-
-
-
-Bishop                    Expires 26 March 2021                [Page 57]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
 A.2.1.  Prioritization Differences
 
    HTTP/2 specifies priority assignments in PRIORITY frames and
    (optionally) in HEADERS frames.  HTTP/3 does not provide a means of
    signaling priority.
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 57]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    Note that while there is no explicit signaling for priority, this
    does not mean that prioritization is not important for achieving good
@@ -3243,18 +3237,18 @@ A.2.4.  Guidance for New Frame Type Definitions
    those frames that depend on the presence of flags need to allocate
    space for flags as part of their frame payload.
 
-
-
-Bishop                    Expires 26 March 2021                [Page 58]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    Other than these issues, frame type HTTP/2 extensions are typically
    portable to QUIC simply by replacing Stream 0 in HTTP/2 with a
    control stream in HTTP/3.  HTTP/3 extensions will not assume
    ordering, but would not be harmed by ordering, and would be portable
    to HTTP/2 in the same manner.
+
+
+
+Bishop                    Expires 27 March 2021                [Page 58]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
 A.2.5.  Mapping Between HTTP/2 and HTTP/3 Frame Types
 
@@ -3293,25 +3287,24 @@ A.2.5.  Mapping Between HTTP/2 and HTTP/3 Frame Types
       instead, larger HEADERS/PUSH_PROMISE frames than HTTP/2 are
       permitted.
 
-
-
-
-
-
-
-
-
-Bishop                    Expires 26 March 2021                [Page 59]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    Frame types defined by extensions to HTTP/2 need to be separately
    registered for HTTP/3 if still applicable.  The IDs of frames defined
    in [HTTP2] have been reserved for simplicity.  Note that the frame
    type space in HTTP/3 is substantially larger (62 bits versus 8 bits),
    so many HTTP/3 frame types have no equivalent HTTP/2 code points.
    See Section 11.2.1.
+
+
+
+
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 59]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
 A.3.  HTTP/2 SETTINGS Parameters
 
@@ -3354,14 +3347,6 @@ A.3.  HTTP/2 SETTINGS Parameters
       SETTINGS_MAX_FRAME_SIZE parameter) in the HTTP/3 SETTINGS frame is
       an error.
 
-
-
-
-Bishop                    Expires 26 March 2021                [Page 60]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    SETTINGS_MAX_HEADER_LIST_SIZE:  This setting identifier has been
       renamed SETTINGS_MAX_FIELD_SECTION_SIZE.
 
@@ -3369,6 +3354,14 @@ Internet-Draft                   HTTP/3                   September 2020
    62 bits long) rather than fixed-length 32-bit fields as in HTTP/2.
    This will often produce a shorter encoding, but can produce a longer
    encoding for settings that use the full 32-bit space.  Settings
+
+
+
+Bishop                    Expires 27 March 2021                [Page 60]
+
+Internet-Draft                   HTTP/3                   September 2020
+
+
    ported from HTTP/2 might choose to redefine their value to limit it
    to 30 bits for more efficient encoding, or to make use of the 62-bit
    space if more than 30 bits are required.
@@ -3410,20 +3403,20 @@ A.4.  HTTP/2 Error Codes
    STREAM_CLOSED (0x5):  Not applicable, since QUIC handles stream
       management.
 
-
-
-
-Bishop                    Expires 26 March 2021                [Page 61]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    FRAME_SIZE_ERROR (0x6):  H3_FRAME_ERROR error code defined in
       Section 8.1.
 
    REFUSED_STREAM (0x7):  H3_REQUEST_REJECTED (in Section 8.1) is used
       to indicate that a request was not processed.  Otherwise, not
       applicable because QUIC handles stream management.
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 61]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    CANCEL (0x8):  H3_REQUEST_CANCELLED in Section 8.1.
 
@@ -3466,14 +3459,6 @@ A.4.1.  Mapping Between HTTP/2 and HTTP/3 Errors
    cancellations that are indicated by terminating a stream with
    H3_REQUEST_CANCELLED; see Section 4.1.2.
 
-
-
-
-Bishop                    Expires 26 March 2021                [Page 62]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    Conversion between errors is described in the logical mapping.  The
    error codes are defined in non-overlapping spaces in order to protect
    against accidental conversion that could result in the use of
@@ -3481,6 +3466,13 @@ Internet-Draft                   HTTP/3                   September 2020
    intermediary is permitted to promote stream errors to connection
    errors but they should be aware of the cost to the connection for
    what might be a temporary or intermittent error.
+
+
+
+Bishop                    Expires 27 March 2021                [Page 62]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
 Appendix B.  Change Log
 
@@ -3519,17 +3511,6 @@ B.4.  Since draft-ietf-quic-http-26
 
    *  No changes
 
-
-
-
-
-
-
-Bishop                    Expires 26 March 2021                [Page 63]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
 B.5.  Since draft-ietf-quic-http-25
 
    *  Require QUICv1 for HTTP/3 (#3117, #3323)
@@ -3540,6 +3521,14 @@ B.5.  Since draft-ietf-quic-http-25
    *  Clarify the definition of "malformed" (#3352, #3345)
 
 B.6.  Since draft-ietf-quic-http-24
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 63]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    *  Removed H3_EARLY_RESPONSE error code; H3_NO_ERROR is recommended
       instead (#3130,#3208)
@@ -3579,13 +3568,6 @@ B.8.  Since draft-ietf-quic-http-22
 
    *  Settings identifiers cannot be duplicated (#2979)
 
-
-
-Bishop                    Expires 26 March 2021                [Page 64]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    *  Changes to SETTINGS frames in 0-RTT (#2972,#2790,#2945):
 
       -  Servers must send all settings with non-default values in their
@@ -3596,6 +3578,13 @@ Internet-Draft                   HTTP/3                   September 2020
 
       -  Servers can't accept early data if they cannot recover the
          settings the client will have remembered
+
+
+
+Bishop                    Expires 27 March 2021                [Page 64]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    *  Clarify that Upgrade and the 101 status code are prohibited
       (#2898,#2889)
@@ -3633,15 +3622,6 @@ B.10.  Since draft-ietf-quic-http-20
 
    *  Extensive changes to error codes and conditions of their sending
 
-
-
-
-
-Bishop                    Expires 26 March 2021                [Page 65]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
       -  Require connection errors for more error conditions (#2511,
          #2510)
 
@@ -3653,6 +3633,14 @@ Internet-Draft                   HTTP/3                   September 2020
       -  Specified error code for servers receiving PUSH_PROMISE (#2709)
 
       -  Specified error code for receiving DATA before HEADERS (#2715)
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 65]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
       -  Describe malformed messages and their handling (#2410, #2764)
 
@@ -3690,14 +3678,6 @@ B.12.  Since draft-ietf-quic-http-18
 
    *  Use connection error for invalid PRIORITY (#2507, #2508)
 
-
-
-
-Bishop                    Expires 26 March 2021                [Page 66]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
 B.13.  Since draft-ietf-quic-http-17
 
    *  HTTP_REQUEST_REJECTED is used to indicate a request can be retried
@@ -3710,6 +3690,13 @@ B.14.  Since draft-ietf-quic-http-16
    *  Rename "HTTP/QUIC" to "HTTP/3" (#1973)
 
    *  Changes to PRIORITY frame (#1865, #2075)
+
+
+
+Bishop                    Expires 27 March 2021                [Page 66]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
       -  Permitted as first frame of request streams
 
@@ -3747,13 +3734,6 @@ B.16.  Since draft-ietf-quic-http-14
 
    *  Expanded discussion of connection closure (#1599,#1717,#1712)
 
-
-
-Bishop                    Expires 26 March 2021                [Page 67]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    *  HTTP_VERSION_FALLBACK falls back to HTTP/1.1 (#1677,#1685)
 
 B.17.  Since draft-ietf-quic-http-13
@@ -3765,6 +3745,14 @@ B.17.  Since draft-ietf-quic-http-13
 
    *  Require settings to be remembered for 0-RTT, prohibit reductions
       (#1541, #1641)
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 67]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    *  Specify behavior for truncated requests (#1596, #1643)
 
@@ -3802,14 +3790,6 @@ B.21.  Since draft-ietf-quic-http-09
 
    *  The server_name TLS extension is now mandatory (#296, #495)
 
-
-
-
-Bishop                    Expires 26 March 2021                [Page 68]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    *  Specified handling of unsupported versions in Alt-Svc (#1093,
       #1097)
 
@@ -3822,6 +3802,13 @@ B.23.  Since draft-ietf-quic-http-07
    *  Changes for integer encodings in QUIC (#595,#905)
 
    *  Use unidirectional streams as appropriate (#515, #240, #281, #886)
+
+
+
+Bishop                    Expires 27 March 2021                [Page 68]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    *  Improvement to the description of GOAWAY (#604, #898)
 
@@ -3857,15 +3844,6 @@ B.26.  Since draft-ietf-quic-http-04
 
    *  DATA frames cannot be empty (#700)
 
-
-
-
-
-Bishop                    Expires 26 March 2021                [Page 69]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
 B.27.  Since draft-ietf-quic-http-03
 
    None.
@@ -3880,6 +3858,13 @@ B.29.  Since draft-ietf-quic-http-01
 
       -  SETTINGS can be sent only once at the start of a connection; no
          changes thereafter
+
+
+
+Bishop                    Expires 27 March 2021                [Page 69]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
       -  SETTINGS_ACK removed
 
@@ -3915,13 +3900,6 @@ B.30.  Since draft-ietf-quic-http-00
 
    *  Described CONNECT pseudo-method (#95)
 
-
-
-Bishop                    Expires 26 March 2021                [Page 70]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    *  Updated ALPN token and Alt-Svc guidance (#13,#87)
 
    *  Application-layer-defined error codes (#19,#74)
@@ -3936,6 +3914,13 @@ Acknowledgements
 
    The original authors of this specification were Robbie Shade and Mike
    Warres.
+
+
+
+Bishop                    Expires 27 March 2021                [Page 70]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    The IETF QUIC Working Group received an enormous amount of support
    from many people.  Among others, the following people provided
@@ -3971,13 +3956,6 @@ Acknowledgements
 
    *  Lucas Pardue
 
-
-
-Bishop                    Expires 26 March 2021                [Page 71]
-
-Internet-Draft                   HTTP/3                   September 2020
-
-
    *  Roberto Peon
 
    *  Julian Reschke
@@ -3991,6 +3969,14 @@ Internet-Draft                   HTTP/3                   September 2020
    *  Ian Swett
 
    *  Willy Taureau
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 71]
+
+Internet-Draft                   HTTP/3                   September 2020
+
 
    *  Martin Thomson
 
@@ -4029,4 +4015,18 @@ Author's Address
 
 
 
-Bishop                    Expires 26 March 2021                [Page 72]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bishop                    Expires 27 March 2021                [Page 72]
