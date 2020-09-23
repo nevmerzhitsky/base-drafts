@@ -2828,6 +2828,8 @@ Appendix D.  Contributors
 
    *  Martin Thomson
 
+   *  Mirja Kühlewind
+
    *  Nick Banks
 
    *  Praveen Balasubramanian
@@ -2846,8 +2848,6 @@ Authors' Addresses
    Google
 
    Email: ianswett@google.com
-
-
 
 
 
