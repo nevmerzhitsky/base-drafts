@@ -3260,7 +3260,7 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    validation (Section 8.2) to verify the peer's ownership of the
    address if validation is not already underway.
 
-   An endpoint only changes the address that it sends packets to in
+   An endpoint only changes the address to which it sends packets in
    response to the highest-numbered non-probing packet.  This ensures
    that an endpoint does not send packets to an old peer address in the
    case that it receives reordered packets.
