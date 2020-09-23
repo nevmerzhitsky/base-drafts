@@ -2162,9 +2162,11 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    *  authenticated negotiation of an application protocol (TLS uses
       ALPN [ALPN] for this purpose)
 
-   An endpoint verifies support for Explicit Congestion Notification
-   (ECN) by observing whether the ACK frames acknowledging the first
-   packets it sends carry ECN counts, as described in Section 13.4.2.
+   Endpoints can use packets sent during the handshake to test for
+   Explicit Congestion Notification (ECN) support; see Section 13.4.  An
+   endpoint verifies support for ECN by observing whether the ACK frames
+   acknowledging the first packets it sends carry ECN counts, as
+   described in Section 13.4.2.
 
    The CRYPTO frame can be sent in different packet number spaces
    (Section 12.3).  The offsets used by CRYPTO frames to ensure ordered
@@ -2176,8 +2178,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    application data during the handshake is enabled where possible,
    shown with a '*'.  Once completed, endpoints are able to exchange
    application data.
-
-
 
 
 
