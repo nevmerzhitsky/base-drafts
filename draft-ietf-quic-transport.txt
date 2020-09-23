@@ -1606,8 +1606,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    migration.
 
    For connections that are no longer needed or desired, there are
-   several ways for a client and server to terminate a connection
-   (Section 10).
+   several ways for a client and server to terminate a connection, as
+   described in Section 10.
 
 5.1.  Connection ID
 
@@ -2218,6 +2218,10 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
                     Figure 4: Simplified QUIC Handshake
 
+   An endpoint verifies support for Explicit Congestion Notification
+   (ECN) by observing whether the ACK frames acknowledging the first
+   packets it sends carry ECN counts, as described in Section 13.4.2.
+
    Endpoints MUST explicitly negotiate an application protocol.  This
    avoids situations where there is a disagreement about the protocol
    that is in use.
@@ -2229,10 +2233,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    this exchange to support client address validation is shown in
    Section 8.1.2.
 
-   Once any address validation exchanges are complete, the cryptographic
-   handshake is used to agree on cryptographic keys.  The cryptographic
-   handshake is carried in Initial (Section 17.2.2) and Handshake
-   (Section 17.2.4) packets.
 
 
 
@@ -2241,6 +2241,11 @@ Iyengar & Thomson         Expires 27 March 2021                [Page 40]
 
 Internet-Draft           QUIC Transport Protocol          September 2020
 
+
+   Once any address validation exchanges are complete, the cryptographic
+   handshake is used to agree on cryptographic keys.  The cryptographic
+   handshake is carried in Initial (Section 17.2.2) and Handshake
+   (Section 17.2.4) packets.
 
    Figure 5 provides an overview of the 1-RTT handshake.  Each line
    shows a QUIC packet with the packet type and packet number shown
@@ -2278,11 +2283,6 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    a single packet of 0-RTT data.  Note that as described in
    Section 12.3, the server acknowledges 0-RTT data in 1-RTT packets,
    and the client sends 1-RTT packets in the same packet number space.
-
-
-
-
-
 
 
 
@@ -2890,8 +2890,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    discard any Initial packet that does not carry the expected token.
 
    Unlike the token that is created for a Retry packet, which is used
-   immediately, the token sent in the NEW_TOKEN frame might be used
-   after some period of time has passed.  Thus, a token SHOULD have an
+   immediately, the token sent in the NEW_TOKEN frame can be used after
+   some period of time has passed.  Thus, a token SHOULD have an
    expiration time, which could be either an explicit expiration time or
    an issued timestamp that can be used to dynamically calculate the
    expiration time.  A server can store the expiration time or include
@@ -3085,8 +3085,8 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    An endpoint MAY include other frames with the PATH_CHALLENGE and
    PATH_RESPONSE frames used for path validation.  In particular, an
    endpoint can include PADDING frames with a PATH_CHALLENGE frame for
-   Path Maximum Transfer Unit (PMTU) discovery (see Section 14.2.1); it
-   can also include its own PATH_CHALLENGE frame with a PATH_RESPONSE
+   Path Maximum Transmission Unit Discovery (PMTUD; see Section 14.2.1);
+   it can also include its own PATH_CHALLENGE frame with a PATH_RESPONSE
    frame.
 
    An endpoint uses a new connection ID for probes sent from a new local
@@ -3209,13 +3209,13 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    If the peer sent the disable_active_migration transport parameter, an
    endpoint also MUST NOT send packets (including probing packets; see
    Section 9.1) from a different local address to the address the peer
-   used during the handshake.  An endpoint that has sent this transport
-   parameter, but detects that a peer has nonetheless migrated to a
-   different remote address MUST either drop the incoming packets on
-   that path without generating a stateless reset or proceed with path
-   validation and allow the peer to migrate.  Generating a stateless
-   reset or closing the connection would allow third parties in the
-   network to cause connections to close by spoofing or otherwise
+   used during the handshake, unless the endpoint has acted on a
+   preferred_address transport parameter from the peer.  If the peer
+   violates this requirement, the endpoint MUST either drop the incoming
+   packets on that path without generating a stateless reset or proceed
+   with path validation and allow the peer to migrate.  Generating a
+   stateless reset or closing the connection would allow third parties
+   in the network to cause connections to close by spoofing or otherwise
    manipulating observed traffic.
 
    Not all changes of peer address are intentional, or active,
@@ -3321,9 +3321,9 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    the attack.
 
    After changing the address to which it sends non-probing packets, an
-   endpoint could abandon any path validation for other addresses.
+   endpoint can abandon any path validation for other addresses.
 
-   Receiving a packet from a new peer address might be the result of a
+   Receiving a packet from a new peer address could be the result of a
    NAT rebinding at the peer.
 
    After verifying a new client address, the server SHOULD send new
