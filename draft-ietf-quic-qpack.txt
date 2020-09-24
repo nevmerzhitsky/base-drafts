@@ -1486,7 +1486,7 @@ Internet-Draft                    QPACK                   September 2020
    observe the encoded length and infer that the guess was correct.
 
    This is possible even over the Transport Layer Security Protocol
-   (TLS, see [RFC5246]), because while TLS provides confidentiality
+   (TLS, see [TLS]), because while TLS provides confidentiality
    protection for content, it only provides a limited amount of
    protection for the length of that content.
 
@@ -1875,11 +1875,6 @@ Internet-Draft                    QPACK                   September 2020
               RFC 2360, DOI 10.17487/RFC2360, June 1998,
               <https://www.rfc-editor.org/info/rfc2360>.
 
-   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246,
-              DOI 10.17487/RFC5246, August 2008,
-              <https://www.rfc-editor.org/info/rfc5246>.
-
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <https://www.rfc-editor.org/info/rfc6454>.
@@ -1888,6 +1883,10 @@ Internet-Draft                    QPACK                   September 2020
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
               DOI 10.17487/RFC7540, May 2015,
               <https://www.rfc-editor.org/info/rfc7540>.
+
+   [TLS]      Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
+              <https://www.rfc-editor.org/info/rfc8446>.
 
 Appendix A.  Static Table
 
@@ -1898,6 +1897,7 @@ Appendix A.  Static Table
    similar but not identical values.  The order of the entries is
    optimized to encode the most common header fields with the smallest
    number of bytes.
+
 
 
 
