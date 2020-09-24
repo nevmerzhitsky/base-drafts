@@ -2666,11 +2666,11 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    exercise this requirement.
 
    A client that does not understand a transport parameter can discard
-   it before attempting 0-RTT.  However, if the client adds support for
-   a discarded transport parameter it risks violating the constraints
-   that the transport parameter establishes.  Definitions for new
-   transport parameters can avoid this problem by setting a default of
-   the most conservative value.
+   it and attempt 0-RTT on subsequent connections.  However, if the
+   client adds support for a discarded transport parameter, it risks
+   violating the constraints that the transport parameter establishes.
+   New transport parameters can avoid this problem by setting a default
+   of the most conservative value.
 
    New transport parameters can be registered according to the rules in
    Section 22.2.
