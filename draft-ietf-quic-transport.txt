@@ -2218,7 +2218,7 @@ Internet-Draft           QUIC Transport Protocol          September 2020
 
                     Figure 4: Simplified QUIC Handshake
 
-   An endpoint validates support for Explicit Congestion Notification
+   An endpoint verifies support for Explicit Congestion Notification
    (ECN) by observing whether the ACK frames acknowledging the first
    packets it sends carry ECN counts, as described in Section 13.4.2.
 
@@ -3293,7 +3293,7 @@ Internet-Draft           QUIC Transport Protocol          September 2020
    controller and RTT estimate, as described in Section 9.4.
 
    The new path might not have the same ECN capability.  Therefore, the
-   endpoint validates ECN capability as described in Section 13.4.
+   endpoint verifies ECN capability as described in Section 13.4.
 
 
 
