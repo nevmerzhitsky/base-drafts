@@ -172,38 +172,39 @@ Internet-Draft                   HTTP/3                   September 2020
 
        A.4.1.  Mapping Between HTTP/2 and HTTP/3 Errors  . . . . . .  62
    Appendix B.  Change Log . . . . . . . . . . . . . . . . . . . . .  63
-     B.1.  Since draft-ietf-quic-http-29 . . . . . . . . . . . . . .  63
-     B.2.  Since draft-ietf-quic-http-28 . . . . . . . . . . . . . .  63
-     B.3.  Since draft-ietf-quic-http-27 . . . . . . . . . . . . . .  63
-     B.4.  Since draft-ietf-quic-http-26 . . . . . . . . . . . . . .  63
-     B.5.  Since draft-ietf-quic-http-25 . . . . . . . . . . . . . .  63
-     B.6.  Since draft-ietf-quic-http-24 . . . . . . . . . . . . . .  63
-     B.7.  Since draft-ietf-quic-http-23 . . . . . . . . . . . . . .  64
-     B.8.  Since draft-ietf-quic-http-22 . . . . . . . . . . . . . .  64
-     B.9.  Since draft-ietf-quic-http-21 . . . . . . . . . . . . . .  65
-     B.10. Since draft-ietf-quic-http-20 . . . . . . . . . . . . . .  65
-     B.11. Since draft-ietf-quic-http-19 . . . . . . . . . . . . . .  66
-     B.12. Since draft-ietf-quic-http-18 . . . . . . . . . . . . . .  66
-     B.13. Since draft-ietf-quic-http-17 . . . . . . . . . . . . . .  66
-     B.14. Since draft-ietf-quic-http-16 . . . . . . . . . . . . . .  66
-     B.15. Since draft-ietf-quic-http-15 . . . . . . . . . . . . . .  67
-     B.16. Since draft-ietf-quic-http-14 . . . . . . . . . . . . . .  67
-     B.17. Since draft-ietf-quic-http-13 . . . . . . . . . . . . . .  67
-     B.18. Since draft-ietf-quic-http-12 . . . . . . . . . . . . . .  68
-     B.19. Since draft-ietf-quic-http-11 . . . . . . . . . . . . . .  68
-     B.20. Since draft-ietf-quic-http-10 . . . . . . . . . . . . . .  68
-     B.21. Since draft-ietf-quic-http-09 . . . . . . . . . . . . . .  68
-     B.22. Since draft-ietf-quic-http-08 . . . . . . . . . . . . . .  68
-     B.23. Since draft-ietf-quic-http-07 . . . . . . . . . . . . . .  68
-     B.24. Since draft-ietf-quic-http-06 . . . . . . . . . . . . . .  69
-     B.25. Since draft-ietf-quic-http-05 . . . . . . . . . . . . . .  69
-     B.26. Since draft-ietf-quic-http-04 . . . . . . . . . . . . . .  69
-     B.27. Since draft-ietf-quic-http-03 . . . . . . . . . . . . . .  69
-     B.28. Since draft-ietf-quic-http-02 . . . . . . . . . . . . . .  69
-     B.29. Since draft-ietf-quic-http-01 . . . . . . . . . . . . . .  69
-     B.30. Since draft-ietf-quic-http-00 . . . . . . . . . . . . . .  70
-     B.31. Since draft-shade-quic-http2-mapping-00 . . . . . . . . .  70
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  70
+     B.1.  Since draft-ietf-quic-http-30 . . . . . . . . . . . . . .  63
+     B.2.  Since draft-ietf-quic-http-29 . . . . . . . . . . . . . .  63
+     B.3.  Since draft-ietf-quic-http-28 . . . . . . . . . . . . . .  63
+     B.4.  Since draft-ietf-quic-http-27 . . . . . . . . . . . . . .  63
+     B.5.  Since draft-ietf-quic-http-26 . . . . . . . . . . . . . .  63
+     B.6.  Since draft-ietf-quic-http-25 . . . . . . . . . . . . . .  63
+     B.7.  Since draft-ietf-quic-http-24 . . . . . . . . . . . . . .  64
+     B.8.  Since draft-ietf-quic-http-23 . . . . . . . . . . . . . .  64
+     B.9.  Since draft-ietf-quic-http-22 . . . . . . . . . . . . . .  64
+     B.10. Since draft-ietf-quic-http-21 . . . . . . . . . . . . . .  65
+     B.11. Since draft-ietf-quic-http-20 . . . . . . . . . . . . . .  65
+     B.12. Since draft-ietf-quic-http-19 . . . . . . . . . . . . . .  66
+     B.13. Since draft-ietf-quic-http-18 . . . . . . . . . . . . . .  66
+     B.14. Since draft-ietf-quic-http-17 . . . . . . . . . . . . . .  66
+     B.15. Since draft-ietf-quic-http-16 . . . . . . . . . . . . . .  67
+     B.16. Since draft-ietf-quic-http-15 . . . . . . . . . . . . . .  67
+     B.17. Since draft-ietf-quic-http-14 . . . . . . . . . . . . . .  67
+     B.18. Since draft-ietf-quic-http-13 . . . . . . . . . . . . . .  67
+     B.19. Since draft-ietf-quic-http-12 . . . . . . . . . . . . . .  68
+     B.20. Since draft-ietf-quic-http-11 . . . . . . . . . . . . . .  68
+     B.21. Since draft-ietf-quic-http-10 . . . . . . . . . . . . . .  68
+     B.22. Since draft-ietf-quic-http-09 . . . . . . . . . . . . . .  68
+     B.23. Since draft-ietf-quic-http-08 . . . . . . . . . . . . . .  69
+     B.24. Since draft-ietf-quic-http-07 . . . . . . . . . . . . . .  69
+     B.25. Since draft-ietf-quic-http-06 . . . . . . . . . . . . . .  69
+     B.26. Since draft-ietf-quic-http-05 . . . . . . . . . . . . . .  69
+     B.27. Since draft-ietf-quic-http-04 . . . . . . . . . . . . . .  69
+     B.28. Since draft-ietf-quic-http-03 . . . . . . . . . . . . . .  69
+     B.29. Since draft-ietf-quic-http-02 . . . . . . . . . . . . . .  70
+     B.30. Since draft-ietf-quic-http-01 . . . . . . . . . . . . . .  70
+     B.31. Since draft-ietf-quic-http-00 . . . . . . . . . . . . . .  70
+     B.32. Since draft-shade-quic-http2-mapping-00 . . . . . . . . .  71
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  71
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  72
 
 1.  Introduction
@@ -213,7 +214,6 @@ Internet-Draft                   HTTP/3                   September 2020
    HTTP/1.1, over a variety of transport and session layers, and with
    HTTP/2 over TLS.  HTTP/3 supports the same semantics over a new
    transport protocol, QUIC.
-
 
 
 
@@ -3479,7 +3479,11 @@ Appendix B.  Change Log
       *RFC Editor's Note:* Please remove this section prior to
       publication of a final version of this document.
 
-B.1.  Since draft-ietf-quic-http-29
+B.1.  Since draft-ietf-quic-http-30
+
+   Editorial changes only.
+
+B.2.  Since draft-ietf-quic-http-29
 
    *  Require a connection error if a reserved frame type that
       corresponds to a frame in HTTP/2 is received (#3991, #3993)
@@ -3487,7 +3491,7 @@ B.1.  Since draft-ietf-quic-http-29
    *  Require a connection error if a reserved setting that corresponds
       to a setting in HTTP/2 is received (#3954, #3955)
 
-B.2.  Since draft-ietf-quic-http-28
+B.3.  Since draft-ietf-quic-http-28
 
    *  CANCEL_PUSH is recommended even when the stream is reset (#3698,
       #3700)
@@ -3495,7 +3499,7 @@ B.2.  Since draft-ietf-quic-http-28
    *  Use H3_ID_ERROR when GOAWAY contains a larger identifier (#3631,
       #3634)
 
-B.3.  Since draft-ietf-quic-http-27
+B.4.  Since draft-ietf-quic-http-27
 
    *  Updated text to refer to latest HTTP revisions
 
@@ -3507,20 +3511,16 @@ B.3.  Since draft-ietf-quic-http-27
    *  Require either :authority or Host if the URI scheme has a
       mandatory authority component (#3408, #3475)
 
-B.4.  Since draft-ietf-quic-http-26
+B.5.  Since draft-ietf-quic-http-26
 
    *  No changes
 
-B.5.  Since draft-ietf-quic-http-25
+B.6.  Since draft-ietf-quic-http-25
 
    *  Require QUICv1 for HTTP/3 (#3117, #3323)
 
    *  Remove DUPLICATE_PUSH and allow duplicate PUSH_PROMISE (#3275,
       #3309)
-
-   *  Clarify the definition of "malformed" (#3352, #3345)
-
-B.6.  Since draft-ietf-quic-http-24
 
 
 
@@ -3530,6 +3530,10 @@ Bishop                    Expires 28 March 2021                [Page 63]
 Internet-Draft                   HTTP/3                   September 2020
 
 
+   *  Clarify the definition of "malformed" (#3352, #3345)
+
+B.7.  Since draft-ietf-quic-http-24
+
    *  Removed H3_EARLY_RESPONSE error code; H3_NO_ERROR is recommended
       instead (#3130,#3208)
 
@@ -3537,7 +3541,7 @@ Internet-Draft                   HTTP/3                   September 2020
 
    *  Some error codes are reserved for greasing (#3325,#3360)
 
-B.7.  Since draft-ietf-quic-http-23
+B.8.  Since draft-ietf-quic-http-23
 
    *  Removed "quic" Alt-Svc parameter (#3061,#3118)
 
@@ -3546,7 +3550,7 @@ B.7.  Since draft-ietf-quic-http-23
 
    *  Clarify error cases around CANCEL_PUSH (#2819,#3083)
 
-B.8.  Since draft-ietf-quic-http-22
+B.9.  Since draft-ietf-quic-http-22
 
    *  Removed priority signaling (#2922,#2924)
 
@@ -3573,11 +3577,7 @@ B.8.  Since draft-ietf-quic-http-22
       -  Servers must send all settings with non-default values in their
          SETTINGS frame, even when resuming
 
-      -  If a client doesn't have settings associated with a 0-RTT
-         ticket, it uses the defaults
 
-      -  Servers can't accept early data if they cannot recover the
-         settings the client will have remembered
 
 
 
@@ -3585,6 +3585,12 @@ Bishop                    Expires 28 March 2021                [Page 64]
 
 Internet-Draft                   HTTP/3                   September 2020
 
+
+      -  If a client doesn't have settings associated with a 0-RTT
+         ticket, it uses the defaults
+
+      -  Servers can't accept early data if they cannot recover the
+         settings the client will have remembered
 
    *  Clarify that Upgrade and the 101 status code are prohibited
       (#2898,#2889)
@@ -3595,11 +3601,11 @@ Internet-Draft                   HTTP/3                   September 2020
 
    *  Unknown error codes cannot be treated as errors (#2998,#2816)
 
-B.9.  Since draft-ietf-quic-http-21
+B.10.  Since draft-ietf-quic-http-21
 
    No changes
 
-B.10.  Since draft-ietf-quic-http-20
+B.11.  Since draft-ietf-quic-http-20
 
    *  Prohibit closing the control stream (#2509, #2666)
 
@@ -3628,12 +3634,6 @@ B.10.  Since draft-ietf-quic-http-20
       -  Updated the error codes for illegal GOAWAY frames (#2714,
          #2707)
 
-      -  Specified error code for HEADERS on control stream (#2708)
-
-      -  Specified error code for servers receiving PUSH_PROMISE (#2709)
-
-      -  Specified error code for receiving DATA before HEADERS (#2715)
-
 
 
 
@@ -3641,6 +3641,12 @@ Bishop                    Expires 28 March 2021                [Page 65]
 
 Internet-Draft                   HTTP/3                   September 2020
 
+
+      -  Specified error code for HEADERS on control stream (#2708)
+
+      -  Specified error code for servers receiving PUSH_PROMISE (#2709)
+
+      -  Specified error code for receiving DATA before HEADERS (#2715)
 
       -  Describe malformed messages and their handling (#2410, #2764)
 
@@ -3650,14 +3656,14 @@ Internet-Draft                   HTTP/3                   September 2020
 
       -  Rationalize HTTP/3 stream creation errors (#2821, #2822)
 
-B.11.  Since draft-ietf-quic-http-19
+B.12.  Since draft-ietf-quic-http-19
 
    *  SETTINGS_NUM_PLACEHOLDERS is 0x9 (#2443,#2530)
 
    *  Non-zero bits in the Empty field of the PRIORITY frame MAY be
       treated as an error (#2501)
 
-B.12.  Since draft-ietf-quic-http-18
+B.13.  Since draft-ietf-quic-http-18
 
    *  Resetting streams following a GOAWAY is recommended, but not
       required (#2256,#2457)
@@ -3678,18 +3684,12 @@ B.12.  Since draft-ietf-quic-http-18
 
    *  Use connection error for invalid PRIORITY (#2507, #2508)
 
-B.13.  Since draft-ietf-quic-http-17
+B.14.  Since draft-ietf-quic-http-17
 
    *  HTTP_REQUEST_REJECTED is used to indicate a request can be retried
       (#2106, #2325)
 
    *  Changed error code for GOAWAY on the wrong stream (#2231, #2343)
-
-B.14.  Since draft-ietf-quic-http-16
-
-   *  Rename "HTTP/QUIC" to "HTTP/3" (#1973)
-
-   *  Changes to PRIORITY frame (#1865, #2075)
 
 
 
@@ -3697,6 +3697,12 @@ Bishop                    Expires 28 March 2021                [Page 66]
 
 Internet-Draft                   HTTP/3                   September 2020
 
+
+B.15.  Since draft-ietf-quic-http-16
+
+   *  Rename "HTTP/QUIC" to "HTTP/3" (#1973)
+
+   *  Changes to PRIORITY frame (#1865, #2075)
 
       -  Permitted as first frame of request streams
 
@@ -3718,11 +3724,11 @@ Internet-Draft                   HTTP/3                   September 2020
 
    *  Removed prohibition of zero-length DATA frames (#2098)
 
-B.15.  Since draft-ietf-quic-http-15
+B.16.  Since draft-ietf-quic-http-15
 
    Substantial editorial reorganization; no technical changes.
 
-B.16.  Since draft-ietf-quic-http-14
+B.17.  Since draft-ietf-quic-http-14
 
    *  Recommend sensible values for QUIC transport parameters
       (#1720,#1806)
@@ -3736,15 +3742,9 @@ B.16.  Since draft-ietf-quic-http-14
 
    *  HTTP_VERSION_FALLBACK falls back to HTTP/1.1 (#1677,#1685)
 
-B.17.  Since draft-ietf-quic-http-13
+B.18.  Since draft-ietf-quic-http-13
 
    *  Reserved some frame types for grease (#1333, #1446)
-
-   *  Unknown unidirectional stream types are tolerated, not errors;
-      some reserved for grease (#1490, #1525)
-
-   *  Require settings to be remembered for 0-RTT, prohibit reductions
-      (#1541, #1641)
 
 
 
@@ -3754,9 +3754,15 @@ Bishop                    Expires 28 March 2021                [Page 67]
 Internet-Draft                   HTTP/3                   September 2020
 
 
+   *  Unknown unidirectional stream types are tolerated, not errors;
+      some reserved for grease (#1490, #1525)
+
+   *  Require settings to be remembered for 0-RTT, prohibit reductions
+      (#1541, #1641)
+
    *  Specify behavior for truncated requests (#1596, #1643)
 
-B.18.  Since draft-ietf-quic-http-12
+B.19.  Since draft-ietf-quic-http-12
 
    *  TLS SNI extension isn't mandatory if an alternative method is used
       (#1459, #1462, #1466)
@@ -3774,17 +3780,17 @@ B.18.  Since draft-ietf-quic-http-12
    *  Priority mechanism now uses explicit placeholders to enable
       persistent structure in the tree (#441,#1421,#1422)
 
-B.19.  Since draft-ietf-quic-http-11
+B.20.  Since draft-ietf-quic-http-11
 
    *  Moved QPACK table updates and acknowledgments to dedicated streams
       (#1121, #1122, #1238)
 
-B.20.  Since draft-ietf-quic-http-10
+B.21.  Since draft-ietf-quic-http-10
 
    *  Settings need to be remembered when attempting and accepting 0-RTT
       (#1157, #1207)
 
-B.21.  Since draft-ietf-quic-http-09
+B.22.  Since draft-ietf-quic-http-09
 
    *  Selected QCRAM for header compression (#228, #1117)
 
@@ -3793,15 +3799,9 @@ B.21.  Since draft-ietf-quic-http-09
    *  Specified handling of unsupported versions in Alt-Svc (#1093,
       #1097)
 
-B.22.  Since draft-ietf-quic-http-08
 
-   *  Clarified connection coalescing rules (#940, #1024)
 
-B.23.  Since draft-ietf-quic-http-07
 
-   *  Changes for integer encodings in QUIC (#595,#905)
-
-   *  Use unidirectional streams as appropriate (#515, #240, #281, #886)
 
 
 
@@ -3810,15 +3810,25 @@ Bishop                    Expires 28 March 2021                [Page 68]
 Internet-Draft                   HTTP/3                   September 2020
 
 
+B.23.  Since draft-ietf-quic-http-08
+
+   *  Clarified connection coalescing rules (#940, #1024)
+
+B.24.  Since draft-ietf-quic-http-07
+
+   *  Changes for integer encodings in QUIC (#595,#905)
+
+   *  Use unidirectional streams as appropriate (#515, #240, #281, #886)
+
    *  Improvement to the description of GOAWAY (#604, #898)
 
    *  Improve description of server push usage (#947, #950, #957)
 
-B.24.  Since draft-ietf-quic-http-06
+B.25.  Since draft-ietf-quic-http-06
 
    *  Track changes in QUIC error code usage (#485)
 
-B.25.  Since draft-ietf-quic-http-05
+B.26.  Since draft-ietf-quic-http-05
 
    *  Made push ID sequential, add MAX_PUSH_ID, remove
       SETTINGS_ENABLE_PUSH (#709)
@@ -3827,7 +3837,7 @@ B.25.  Since draft-ietf-quic-http-05
 
    *  Expanded text on GOAWAY and cancellation (#757)
 
-B.26.  Since draft-ietf-quic-http-04
+B.27.  Since draft-ietf-quic-http-04
 
    *  Cite RFC 5234 (#404)
 
@@ -3844,20 +3854,10 @@ B.26.  Since draft-ietf-quic-http-04
 
    *  DATA frames cannot be empty (#700)
 
-B.27.  Since draft-ietf-quic-http-03
+B.28.  Since draft-ietf-quic-http-03
 
    None.
 
-B.28.  Since draft-ietf-quic-http-02
-
-   *  Track changes in transport draft
-
-B.29.  Since draft-ietf-quic-http-01
-
-   *  SETTINGS changes (#181):
-
-      -  SETTINGS can be sent only once at the start of a connection; no
-         changes thereafter
 
 
 
@@ -3865,6 +3865,17 @@ Bishop                    Expires 28 March 2021                [Page 69]
 
 Internet-Draft                   HTTP/3                   September 2020
 
+
+B.29.  Since draft-ietf-quic-http-02
+
+   *  Track changes in transport draft
+
+B.30.  Since draft-ietf-quic-http-01
+
+   *  SETTINGS changes (#181):
+
+      -  SETTINGS can be sent only once at the start of a connection; no
+         changes thereafter
 
       -  SETTINGS_ACK removed
 
@@ -3885,7 +3896,7 @@ Internet-Draft                   HTTP/3                   September 2020
    *  Guide to differences from HTTP/2 and porting HTTP/2 extensions
       added (#127,#242)
 
-B.30.  Since draft-ietf-quic-http-00
+B.31.  Since draft-ietf-quic-http-00
 
    *  Changed "HTTP/2-over-QUIC" to "HTTP/QUIC" throughout (#11,#29)
 
@@ -3904,7 +3915,14 @@ B.30.  Since draft-ietf-quic-http-00
 
    *  Application-layer-defined error codes (#19,#74)
 
-B.31.  Since draft-shade-quic-http2-mapping-00
+
+
+Bishop                    Expires 28 March 2021                [Page 70]
+
+Internet-Draft                   HTTP/3                   September 2020
+
+
+B.32.  Since draft-shade-quic-http2-mapping-00
 
    *  Adopted as base for draft-ietf-quic-http
 
@@ -3914,13 +3932,6 @@ Acknowledgements
 
    The original authors of this specification were Robbie Shade and Mike
    Warres.
-
-
-
-Bishop                    Expires 28 March 2021                [Page 70]
-
-Internet-Draft                   HTTP/3                   September 2020
-
 
    The IETF QUIC Working Group received an enormous amount of support
    from many people.  Among others, the following people provided
@@ -3960,6 +3971,13 @@ Internet-Draft                   HTTP/3                   September 2020
 
    *  Julian Reschke
 
+
+
+Bishop                    Expires 28 March 2021                [Page 71]
+
+Internet-Draft                   HTTP/3                   September 2020
+
+
    *  Eric Rescorla
 
    *  Martin Seemann
@@ -3969,14 +3987,6 @@ Internet-Draft                   HTTP/3                   September 2020
    *  Ian Swett
 
    *  Willy Taureau
-
-
-
-
-Bishop                    Expires 28 March 2021                [Page 71]
-
-Internet-Draft                   HTTP/3                   September 2020
-
 
    *  Martin Thomson
 
@@ -3993,16 +4003,6 @@ Author's Address
    Akamai
 
    Email: mbishop@evequefou.be
-
-
-
-
-
-
-
-
-
-
 
 
 
