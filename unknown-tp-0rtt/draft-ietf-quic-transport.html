@@ -3607,11 +3607,10 @@ endpoint MUST ignore transport parameters that it does not support.  Absence of
 a transport parameter therefore disables any optional protocol feature that is
 negotiated using the parameter.  As described in <a href="#transport-parameter-grease" class="xref">Section 18.1</a>,
 some identifiers are reserved in order to exercise this requirement.<a href="#section-7.4.2-1" class="pilcrow">¶</a></p>
-<p id="section-7.4.2-2">A client that discards a transport parameter risks violating constraints set by
-that transport parameter when it attempts 0-RTT, especially when clients are
-updated to support new transport parameters. Definitions for new transport
-parameters can avoid this problem by setting a default of the most conservative
-value.<a href="#section-7.4.2-2" class="pilcrow">¶</a></p>
+<p id="section-7.4.2-2">A client that discards a transport parameter that it does not understand risks
+violating constraints set by that transport parameter when it attempts 0-RTT
+after being updated. Definitions for new transport parameters can avoid this
+problem by setting a default of the most conservative value.<a href="#section-7.4.2-2" class="pilcrow">¶</a></p>
 <p id="section-7.4.2-3">New transport parameters can be registered according to the rules in
 <a href="#iana-transport-parameters" class="xref">Section 22.2</a>.<a href="#section-7.4.2-3" class="pilcrow">¶</a></p>
 </section>
