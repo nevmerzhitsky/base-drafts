@@ -69,9 +69,9 @@ Internet-Draft               QUIC Invariants              September 2020
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Conventions and Definitions . . . . . . . . . . . . . . . . .   3
-   3.  An Extremely Abstract Description of QUIC . . . . . . . . . .   3
+   1.  An Extremely Abstract Description of QUIC . . . . . . . . . .   2
+   2.  Fixed Properties of All QUIC Versions . . . . . . . . . . . .   2
+   3.  Conventions and Definitions . . . . . . . . . . . . . . . . .   3
    4.  Notational Conventions  . . . . . . . . . . . . . . . . . . .   3
    5.  QUIC Packets  . . . . . . . . . . . . . . . . . . . . . . . .   4
      5.1.  Long Header . . . . . . . . . . . . . . . . . . . . . . .   4
@@ -87,24 +87,24 @@ Table of Contents
    Appendix A.  Incorrect Assumptions  . . . . . . . . . . . . . . .   9
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  10
 
-1.  Introduction
+1.  An Extremely Abstract Description of QUIC
+
+   QUIC is a connection-oriented protocol between two endpoints.  Those
+   endpoints exchange UDP datagrams.  These UDP datagrams contain QUIC
+   packets.  QUIC endpoints use QUIC packets to establish a QUIC
+   connection, which is shared protocol state between those endpoints.
+
+2.  Fixed Properties of All QUIC Versions
 
    In addition to providing secure, multiplexed transport, QUIC
-   [QUIC-TRANSPORT] includes the ability to negotiate a version.  This
+   [QUIC-TRANSPORT] allows for the option to negotiate a version.  This
    allows the protocol to change over time in response to new
-   requirements.  Many characteristics of the protocol will change
+   requirements.  Many characteristics of the protocol could change
    between versions.
 
    This document describes the subset of QUIC that is intended to remain
    stable as new versions are developed and deployed.  All of these
    invariants are IP-version-independent.
-
-
-
-
-
-
-
 
 
 
@@ -127,7 +127,7 @@ Internet-Draft               QUIC Invariants              September 2020
    that might be made based on knowledge of QUIC version 1; these do not
    apply to every version of QUIC.
 
-2.  Conventions and Definitions
+3.  Conventions and Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -137,13 +137,6 @@ Internet-Draft               QUIC Invariants              September 2020
 
    This document uses terms and notational conventions from
    [QUIC-TRANSPORT].
-
-3.  An Extremely Abstract Description of QUIC
-
-   QUIC is a connection-oriented protocol between two endpoints.  Those
-   endpoints exchange UDP datagrams.  These UDP datagrams contain QUIC
-   packets.  QUIC endpoints use QUIC packets to establish a QUIC
-   connection, which is shared protocol state between those endpoints.
 
 4.  Notational Conventions
 
@@ -161,15 +154,6 @@ Internet-Draft               QUIC Invariants              September 2020
    x (A):  Indicates that x is A bits long
 
    x (A..B):  Indicates that x can be any length from A to B; A can be
-
-
-
-
-Thomson                   Expires 28 March 2021                 [Page 3]
-
-Internet-Draft               QUIC Invariants              September 2020
-
-
       omitted to indicate a minimum of zero bits and B can be omitted to
       indicate no set upper limit; values in this format always end on
       an octet boundary
@@ -178,6 +162,13 @@ Internet-Draft               QUIC Invariants              September 2020
 
    x (E) ...:  Indicates that x is repeated zero or more times (and that
       each instance is length E)
+
+
+
+Thomson                   Expires 28 March 2021                 [Page 3]
+
+Internet-Draft               QUIC Invariants              September 2020
+
 
    This document uses network byte order (that is, big endian) values.
    Fields are placed starting from the high-order bits of each byte.
@@ -217,6 +208,15 @@ Internet-Draft               QUIC Invariants              September 2020
 5.1.  Long Header
 
    Long headers take the form described in Figure 2.
+
+
+
+
+
+
+
+
+
 
 
 
