@@ -400,7 +400,7 @@ Internet-Draft               QUIC Invariants              September 2020
 
 7.  Security and Privacy Considerations
 
-   It is possible that middleboxes could use traits of a specific
+   It is possible that middleboxes could observe traits of a specific
    version of QUIC and assume that when other versions of QUIC exhibit
    similar traits the same underlying semantic is being expressed.
    There are potentially many such traits; see Appendix A.  Some effort
