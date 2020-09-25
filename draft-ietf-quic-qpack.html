@@ -13,7 +13,7 @@
 representing HTTP fields, to be used in HTTP/3. This is a variation of HPACK
 compression that seeks to reduce head-of-line blocking. 
     " name="description">
-<meta content="xml2rfc 2.47.0" name="generator">
+<meta content="xml2rfc 3.1.1" name="generator">
 <meta content="draft-ietf-quic-qpack-latest" name="ietf.draft">
 <link href="draft-ietf-quic-qpack.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -807,7 +807,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Krasic, et al.</td>
-<td class="center">Expires 28 March 2021</td>
+<td class="center">Expires 29 March 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -820,12 +820,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-quic-qpack-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2020-09-24" class="published">24 September 2020</time>
+<time datetime="2020-09-25" class="published">25 September 2020</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-03-28">28 March 2021</time></dd>
+<dd class="expires"><time datetime="2021-03-29">29 March 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -881,7 +881,7 @@ code and issues list for this draft can be found at
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 28 March 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 March 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1242,7 +1242,7 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <p id="section-1.1-2">Definitions of terms that are used in this document:<a href="#section-1.1-2" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-1.1-3">
           <dt id="section-1.1-3.1">HTTP fields:</dt>
-          <dd id="section-1.1-3.2">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.2">
   Metadata sent as part of an HTTP message.  The term encompasses both header
 and trailer fields. Colloquially, the term "headers" has often been used to
 refer to HTTP header fields and trailer fields; this document uses "fields"
@@ -1250,20 +1250,20 @@ for generality.<a href="#section-1.1-3.2" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.3">HTTP field line:</dt>
-          <dd id="section-1.1-3.4">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.4">
   A name-value pair sent as part of an HTTP field section.  See Section 5 of
 <span>[<a href="#SEMANTICS" class="xref">SEMANTICS</a>]</span>.<a href="#section-1.1-3.4" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.5">HTTP field value:</dt>
-          <dd id="section-1.1-3.6">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.6">
   Data associated with a field name, composed from all field line values with
 that field name in that section, concatenated together and separated with
 commas.<a href="#section-1.1-3.6" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.7">Field section:</dt>
-          <dd id="section-1.1-3.8">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.8">
   An ordered collection of HTTP field lines associated with an HTTP message.  A
 field section can contain multiple field lines with the same name.  It can
 also contain duplicate field lines.  An HTTP message can include both header
@@ -1271,34 +1271,34 @@ field and trailer field sections.<a href="#section-1.1-3.8" class="pilcrow">¶</
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.9">Representation:</dt>
-          <dd id="section-1.1-3.10">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.10">
   An instruction that represents a field line, possibly by reference to the
 dynamic and static tables.<a href="#section-1.1-3.10" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.11">Encoder:</dt>
-          <dd id="section-1.1-3.12">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.12">
   An implementation that encodes field sections.<a href="#section-1.1-3.12" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.13">Decoder:</dt>
-          <dd id="section-1.1-3.14">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.14">
   An implementation that decodes encoded field sections.<a href="#section-1.1-3.14" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.15">Absolute Index:</dt>
-          <dd id="section-1.1-3.16">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.16">
   A unique index for each entry in the dynamic table.<a href="#section-1.1-3.16" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.17">Base:</dt>
-          <dd id="section-1.1-3.18">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.18">
   A reference point for relative and post-base indices.  Representations that
 reference dynamic table entries are relative to a Base.<a href="#section-1.1-3.18" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.1-3.19">Insert Count:</dt>
-          <dd id="section-1.1-3.20">
+          <dd style="margin-left: 1.5em" id="section-1.1-3.20">
   The total number of entries inserted in the dynamic table.<a href="#section-1.1-3.20" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
@@ -1315,18 +1315,18 @@ reference dynamic table entries are relative to a Base.<a href="#section-1.1-3.1
 following additional conventions:<a href="#section-1.2-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-1.2-2">
           <dt id="section-1.2-2.1">x (A)</dt>
-          <dd id="section-1.2-2.2">
+          <dd style="margin-left: 1.5em" id="section-1.2-2.2">
   Indicates that x is A bits long<a href="#section-1.2-2.2" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.2-2.3">x (A+)</dt>
-          <dd id="section-1.2-2.4">
+          <dd style="margin-left: 1.5em" id="section-1.2-2.4">
   Indicates that x uses the prefixed integer encoding defined in
 <a href="#prefixed-integers" class="xref">Section 4.1.1</a>, beginning with an A-bit prefix.<a href="#section-1.2-2.4" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.2-2.5">x ...</dt>
-          <dd id="section-1.2-2.6">
+          <dd style="margin-left: 1.5em" id="section-1.2-2.6">
   Indicates that x is variable-length and extends to the end of the region.<a href="#section-1.2-2.6" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
@@ -2475,13 +2475,13 @@ represented as a 4-bit prefix string literal, then the value, represented as an
 <p id="section-5-1">QPACK defines two settings for the HTTP/3 SETTINGS frame:<a href="#section-5-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-5-2">
         <dt id="section-5-2.1">SETTINGS_QPACK_MAX_TABLE_CAPACITY (0x1):</dt>
-        <dd id="section-5-2.2">
+        <dd style="margin-left: 1.5em" id="section-5-2.2">
   The default value is zero.  See <a href="#header-table-dynamic" class="xref">Section 3.2</a> for usage.  This is
 the equivalent of the SETTINGS_HEADER_TABLE_SIZE from HTTP/2.<a href="#section-5-2.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 <dt id="section-5-2.3">SETTINGS_QPACK_BLOCKED_STREAMS (0x7):</dt>
-        <dd id="section-5-2.4">
+        <dd style="margin-left: 1.5em" id="section-5-2.4">
   The default value is zero.  See <a href="#blocked-streams" class="xref">Section 2.1.2</a>.<a href="#section-5-2.4" class="pilcrow">¶</a>
 </dd>
       <dd class="break"></dd>
@@ -2497,19 +2497,19 @@ the equivalent of the SETTINGS_HEADER_TABLE_SIZE from HTTP/2.<a href="#section-5
 QPACK that prevent the stream or connection from continuing:<a href="#section-6-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-6-2">
         <dt id="section-6-2.1">QPACK_DECOMPRESSION_FAILED (0x200):</dt>
-        <dd id="section-6-2.2">
+        <dd style="margin-left: 1.5em" id="section-6-2.2">
   The decoder failed to interpret an encoded field section and is not able to
 continue decoding that field section.<a href="#section-6-2.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 <dt id="section-6-2.3">QPACK_ENCODER_STREAM_ERROR (0x201):</dt>
-        <dd id="section-6-2.4">
+        <dd style="margin-left: 1.5em" id="section-6-2.4">
   The decoder failed to interpret an encoder instruction received on the
 encoder stream.<a href="#section-6-2.4" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 <dt id="section-6-2.5">QPACK_DECODER_STREAM_ERROR (0x202):</dt>
-        <dd id="section-6-2.6">
+        <dd style="margin-left: 1.5em" id="section-6-2.6">
   The encoder failed to interpret a decoder instruction received on the
 decoder stream.<a href="#section-6-2.6" class="pilcrow">¶</a>
 </dd>
@@ -2551,7 +2551,7 @@ content, it only provides a limited amount of protection for the length of that
 content.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-7.1-4">
           <dt id="section-7.1-4.1">Note:</dt>
-          <dd id="section-7.1-4.2">
+          <dd style="margin-left: 1.5em" id="section-7.1-4.2">
   Padding schemes only provide limited protection against an attacker with these
 capabilities, potentially only forcing an increased number of guesses to learn
 the length associated with a given guess. Padding schemes also work directly
@@ -2624,7 +2624,7 @@ a field value to result in the field not being compared to the dynamic table
 entries in future messages, effectively preventing further guesses.<a href="#section-7.3-5" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-7.3-6">
           <dt id="section-7.3-6.1">Note:</dt>
-          <dd id="section-7.3-6.2">
+          <dd style="margin-left: 1.5em" id="section-7.3-6.2">
   Simply removing entries corresponding to the field from the dynamic table can
 be ineffectual if the attacker has a reliable way of causing values to be
 reinstalled. For example, a request to load an image in a web browser
@@ -2893,11 +2893,11 @@ are registered in the "HTTP/3 Error Code" registry established in <span>[<a href
 <dl class="references">
 <dt id="HTTP3">[HTTP3]</dt>
         <dd>
-<span class="refAuthor">Bishop, M., Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 3 (HTTP/3)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-http-latest</span>, <time datetime="2020-09-24" class="refDate">24 September 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-http-latest">https://tools.ietf.org/html/draft-ietf-quic-http-latest</a>&gt;</span>. </dd>
+<span class="refAuthor">Bishop, M., Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 3 (HTTP/3)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-http-latest</span>, <time datetime="2020-09-25" class="refDate">25 September 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-http-latest">https://tools.ietf.org/html/draft-ietf-quic-http-latest</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="QUIC-TRANSPORT">[QUIC-TRANSPORT]</dt>
         <dd>
-<span class="refAuthor">Iyengar, J., Ed.</span><span class="refAuthor"> and M. Thomson, Ed.</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-latest</span>, <time datetime="2020-09-24" class="refDate">24 September 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-latest">https://tools.ietf.org/html/draft-ietf-quic-transport-latest</a>&gt;</span>. </dd>
+<span class="refAuthor">Iyengar, J., Ed.</span><span class="refAuthor"> and M. Thomson, Ed.</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-latest</span>, <time datetime="2020-09-25" class="refDate">25 September 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-latest">https://tools.ietf.org/html/draft-ietf-quic-transport-latest</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -3759,8 +3759,8 @@ return encoderBuffer, prefixBuffer + streamBuffer
       <h2 id="name-change-log">
 <a href="#section-appendix.d" class="section-number selfRef">Appendix D. </a><a href="#name-change-log" class="section-name selfRef">Change Log</a>
       </h2>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-appendix.d-1.1">
+<ul class="ulEmpty normal">
+<li class="ulEmpty normal" id="section-appendix.d-1.1">
           <strong>RFC Editor's Note:</strong> Please remove this section prior to publication of a
 final version of this document.<a href="#section-appendix.d-1.1" class="pilcrow">¶</a>
 </li>
