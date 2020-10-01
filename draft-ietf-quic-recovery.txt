@@ -134,15 +134,15 @@ Internet-Draft             QUIC Loss Detection              October 2020
      A.3.  Variables of interest . . . . . . . . . . . . . . . . . .  32
      A.4.  Initialization  . . . . . . . . . . . . . . . . . . . . .  33
      A.5.  On Sending a Packet . . . . . . . . . . . . . . . . . . .  33
-     A.6.  On Receiving a Datagram . . . . . . . . . . . . . . . . .  33
+     A.6.  On Receiving a Datagram . . . . . . . . . . . . . . . . .  34
      A.7.  On Receiving an Acknowledgment  . . . . . . . . . . . . .  34
-     A.8.  Setting the Loss Detection Timer  . . . . . . . . . . . .  35
+     A.8.  Setting the Loss Detection Timer  . . . . . . . . . . . .  36
      A.9.  On Timeout  . . . . . . . . . . . . . . . . . . . . . . .  37
      A.10. Detecting Lost Packets  . . . . . . . . . . . . . . . . .  38
    Appendix B.  Congestion Control Pseudocode  . . . . . . . . . . .  39
      B.1.  Constants of interest . . . . . . . . . . . . . . . . . .  39
      B.2.  Variables of interest . . . . . . . . . . . . . . . . . .  40
-     B.3.  Initialization  . . . . . . . . . . . . . . . . . . . . .  40
+     B.3.  Initialization  . . . . . . . . . . . . . . . . . . . . .  41
      B.4.  On Packet Sent  . . . . . . . . . . . . . . . . . . . . .  41
      B.5.  On Packet Acknowledgement . . . . . . . . . . . . . . . .  41
      B.6.  On New Congestion Event . . . . . . . . . . . . . . . . .  42
@@ -1760,6 +1760,8 @@ A.3.  Variables of interest
    min_rtt:  The minimum RTT seen in the connection, ignoring
       acknowledgment delay, as described in Section 5.2.
 
+   first_rtt_sample:  The time that the first RTT sample was obtained.
+
    max_ack_delay:  The maximum amount of time by which the receiver
       intends to delay acknowledgments for packets in the Application
       Data packet number space, as defined by the eponymous transport
@@ -1783,8 +1785,6 @@ A.3.  Variables of interest
       exceeding the reordering window in time.
 
    sent_packets[kPacketNumberSpace]:  An association of packet numbers
-      in a packet number space to information about them.  Described in
-      detail above in Appendix A.1.
 
 
 
@@ -1793,6 +1793,9 @@ Iyengar & Swett           Expires 4 April 2021                 [Page 32]
 
 Internet-Draft             QUIC Loss Detection              October 2020
 
+
+      in a packet number space to information about them.  Described in
+      detail above in Appendix A.1.
 
 A.4.  Initialization
 
@@ -1805,6 +1808,7 @@ A.4.  Initialization
    smoothed_rtt = kInitialRtt
    rttvar = kInitialRtt / 2
    min_rtt = 0
+   first_rtt_sample = 0
    for pn_space in [ Initial, Handshake, ApplicationData ]:
      largest_acked_packet[pn_space] = infinite
      time_of_last_ack_eliciting_packet[pn_space] = 0
@@ -1834,6 +1838,18 @@ A.5.  On Sending a Packet
          sent_bytes
        SetLossDetectionTimer()
 
+
+
+
+
+
+
+
+Iyengar & Swett           Expires 4 April 2021                 [Page 33]
+
+Internet-Draft             QUIC Loss Detection              October 2020
+
+
 A.6.  On Receiving a Datagram
 
    When a server is blocked by anti-amplification limits, receiving a
@@ -1842,13 +1858,6 @@ A.6.  On Receiving a Datagram
    be re-armed.
 
    Pseudocode for OnDatagramReceived follows:
-
-
-
-Iyengar & Swett           Expires 4 April 2021                 [Page 33]
-
-Internet-Draft             QUIC Loss Detection              October 2020
-
 
    OnDatagramReceived(datagram):
      // If this datagram unblocks the server, arm the
@@ -1889,6 +1898,14 @@ A.7.  On Receiving an Acknowledgment
      if (newly_acked_packets.largest().packet_number ==
              ack.largest_acked &&
          IncludesAckEliciting(newly_acked_packets)):
+
+
+
+Iyengar & Swett           Expires 4 April 2021                 [Page 34]
+
+Internet-Draft             QUIC Loss Detection              October 2020
+
+
        latest_rtt =
          now() - newly_acked_packets.largest().time_sent
        UpdateRtt(ack.ack_delay)
@@ -1898,14 +1915,6 @@ A.7.  On Receiving an Acknowledgment
          ProcessECN(ack, pn_space)
 
      lost_packets = DetectAndRemoveLostPackets(pn_space)
-
-
-
-Iyengar & Swett           Expires 4 April 2021                 [Page 34]
-
-Internet-Draft             QUIC Loss Detection              October 2020
-
-
      if (!lost_packets.empty()):
        OnPacketsLost(lost_packets)
      OnPacketsAcked(newly_acked_packets)
@@ -1918,10 +1927,11 @@ Internet-Draft             QUIC Loss Detection              October 2020
 
 
    UpdateRtt(ack_delay):
-     if (is first RTT sample):
+     if (first_rtt_sample == 0):
        min_rtt = latest_rtt
        smoothed_rtt = latest_rtt
        rttvar = latest_rtt / 2
+       first_rtt_sample = now()
        return
 
      // min_rtt ignores acknowledgment delay.
@@ -1940,6 +1950,18 @@ Internet-Draft             QUIC Loss Detection              October 2020
      rttvar = 3/4 * rttvar + 1/4 * abs(smoothed_rtt - adjusted_rtt)
      smoothed_rtt = 7/8 * smoothed_rtt + 1/8 * adjusted_rtt
 
+
+
+
+
+
+
+
+Iyengar & Swett           Expires 4 April 2021                 [Page 35]
+
+Internet-Draft             QUIC Loss Detection              October 2020
+
+
 A.8.  Setting the Loss Detection Timer
 
    QUIC loss detection uses a single timer for all timeout loss
@@ -1953,14 +1975,6 @@ A.8.  Setting the Loss Detection Timer
    immediately.
 
    Pseudocode for SetLossDetectionTimer follows:
-
-
-
-
-Iyengar & Swett           Expires 4 April 2021                 [Page 35]
-
-Internet-Draft             QUIC Loss Detection              October 2020
-
 
    GetLossTimeAndSpace():
      time = loss_time[Initial]
@@ -1996,6 +2010,14 @@ Internet-Draft             QUIC Loss Detection              October 2020
        t = time_of_last_ack_eliciting_packet[space] + duration
        if (t < pto_timeout):
          pto_timeout = t
+
+
+
+Iyengar & Swett           Expires 4 April 2021                 [Page 36]
+
+Internet-Draft             QUIC Loss Detection              October 2020
+
+
          pto_space = space
      return pto_timeout, pto_space
 
@@ -2010,14 +2032,6 @@ Internet-Draft             QUIC Loss Detection              October 2020
 
    SetLossDetectionTimer():
      earliest_loss_time, _ = GetLossTimeAndSpace()
-
-
-
-Iyengar & Swett           Expires 4 April 2021                 [Page 36]
-
-Internet-Draft             QUIC Loss Detection              October 2020
-
-
      if (earliest_loss_time != 0):
        // Time threshold loss detection.
        loss_detection_timer.update(earliest_loss_time)
@@ -2046,20 +2060,6 @@ A.9.  On Timeout
    the action to be performed.
 
    Pseudocode for OnLossDetectionTimeout follows:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2228,12 +2228,12 @@ B.2.  Variables of interest
       is below ssthresh, the mode is slow start and the window grows by
       the number of bytes acknowledged.
 
-   first_rtt_sample:  The time that the first RTT sample was obtained.
+   The congestion control pseudocode also accesses some of the variables
+   from the loss recovery pseudocode.
 
-B.3.  Initialization
 
-   At the beginning of the connection, initialize the congestion control
-   variables as follows:
+
+
 
 
 
@@ -2242,11 +2242,15 @@ Iyengar & Swett           Expires 4 April 2021                 [Page 40]
 Internet-Draft             QUIC Loss Detection              October 2020
 
 
+B.3.  Initialization
+
+   At the beginning of the connection, initialize the congestion control
+   variables as follows:
+
    congestion_window = kInitialWindow
    bytes_in_flight = 0
    congestion_recovery_start_time = 0
    ssthresh = infinite
-   first_rtt_sample = 0
    for pn_space in [ Initial, Handshake, ApplicationData ]:
      ecn_ce_counters[pn_space] = 0
 
@@ -2289,10 +2293,6 @@ B.5.  On Packet Acknowledgement
 
 
 
-
-
-
-
 Iyengar & Swett           Expires 4 April 2021                 [Page 41]
 
 Internet-Draft             QUIC Loss Detection              October 2020
@@ -2302,9 +2302,6 @@ Internet-Draft             QUIC Loss Detection              October 2020
      return sent_time <= congestion_recovery_start_time
 
    OnPacketsAcked(acked_packets):
-     if (first_rtt_sample == 0):
-       first_rtt_sample = now()
-
      for acked_packet in acked_packets:
        OnPacketAcked(acked_packet)
 
@@ -2349,6 +2346,9 @@ B.6.  On New Congestion Event
 
 
 
+
+
+
 Iyengar & Swett           Expires 4 April 2021                 [Page 42]
 
 Internet-Draft             QUIC Loss Detection              October 2020
@@ -2380,7 +2380,8 @@ B.8.  On Packets Lost
      // Reset the congestion window if the loss of these
      // packets indicates persistent congestion.
      // Only consider packets sent after getting an RTT sample.
-     assert(first_rtt_sample != 0)
+     if (first_rtt_sample == 0):
+       return
      pc_lost = {}
      for lost in lost_packets:
        if lost.time_sent > first_rtt_sample:
@@ -2395,7 +2396,6 @@ B.9.  Upon dropping Initial or Handshake keys
    are discarded and loss detection state is updated.
 
    Pseudocode for OnPacketNumberSpaceDiscarded follows:
-
 
 
 
